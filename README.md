@@ -1,2 +1,2 @@
 # CSE327-Project
-This is the project for CSE327 course of Spring 2024 Semester. Our group number is _ &amp; we are from Section 8
+The project is about a freelance marketplace website where Clients can post jobs/projects and the freelancers can apply to the jobs by bidding on it. The website is called justajob.com or JustAJob. The project documentation is in the Wiki section.
