@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>WeFreelance</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <div class="login-container">
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p id="welcomeMessage" style="color: white; margin-top: 10px;"></p>
+        </div>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Welcome to My Freelance Services</h2>
+            <p>This is the home section where I introduce myself and my website.</p>
+        </section>
+        <section id="services">
+            <h2>Services Offered</h2>
+            <ul>
+                <li>Web Development</li>
+                <li>Graphic Design</li>
+                <li>Digital Marketing</li>
+                <li>Consulting</li>
+                <li>Mobile Apps</li>
+            </ul>
+        </section>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Details about my background, experience, and expertise.</p>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright © 2024 WeFreelance. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting in the traditional way
+            var username = document.getElementById('username').value;
+            document.getElementById('welcomeMessage').textContent = 'Welcome ' + username + '!';
+            document.getElementById('loginForm').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
