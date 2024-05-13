@@ -8,58 +8,66 @@
 </head>
 <body>
     <header>
-        <h1>Just A Job</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
-        <div class="login-container">
-            <form id="loginForm">
-                <div class="input-group">
-                    <input type="text" id="username" name="username" placeholder="Username" required>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <p id="welcomeMessage" style="color: white; margin-top: 10px;"></p>
+        <div class="header-top">
+            <img src="Images/logo.png" alt="Company Logo" style="height: 30px;">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#browsejobs">Browse Jobs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="login-container">
+                <form id="loginForm">
+                    <button type="button" class="login" onclick="login()">Sign in</button>
+                    <button type="button" class="register" onclick="register()">Join</button>
+                </form>
+                <p id="welcomeMessage" style="color: white;"></p>
+            </div>
+        </div>
+        <div class="bottom-header">
+            <p>Tap into expert talent, no matter where you are get your tasks done remotely!</p>
+            <input type="text" placeholder="What are you looking for?" class="header-input">
         </div>
     </header>
+
+
     <main>
         <section id="home">
-            <h2>Welcome to My Freelance Services</h2>
-            <p>This is the home section where I introduce myself and my website.</p>
+            <h2>Hire Experts Based on Category</h2>
+            <h4>Find experts from 10+ skills</h4>
         </section>
+       
         <section id="services">
-            <h2>Services Offered</h2>
             <ul>
-                <li>Web Development</li>
-                <li>Graphic Design</li>
+                <li>Development & Coding</li>
+                <li>Design & Creative</li>
                 <li>Digital Marketing</li>
-                <li>Consulting</li>
-                <li>Mobile Apps</li>
-                <li>Videography</li>
+                <li>Writing & Translation</li>
+                <li>Video & Music</li>
+                <li>3D Design</li>
+                <li>Business</li>
+                <li>AI</li>
             </ul>
         </section>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Details about my background, experience, and expertise.</p>
+        <section id="hire">
+            <h2>Also in Just a Job, Get Hired & Find Great Work</h2>
+            <p>work with clients on our platform to take your career to the next level</p>
         </section>
     </main>
     <footer>
         <p>Copyright © 2024 JustAJob. All rights reserved.</p>
     </footer>
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting in the traditional way
-            var username = document.getElementById('username').value;
-            document.getElementById('welcomeMessage').textContent = 'Welcome ' + username + '!';
-            document.getElementById('loginForm').style.display = 'none';
-        });
+        function login() {
+            // Placeholder for login functionality
+            console.log("Login functionality placeholder");
+        }
+
+        function register() {
+            // Placeholder for register functionality
+            console.log("Register functionality placeholder");
+        }
     </script>
 </body>
 </html>
