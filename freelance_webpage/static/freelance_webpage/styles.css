@@ -1,0 +1,176 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* General background color for the body */
+}
+
+header {
+    background-image: url("Images/home_bg.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+img{
+    max-width: 100%;
+}
+
+.header-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+img {
+    margin-left: 40px;
+}
+
+nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a, .login-container button .login{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 20px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.login-container button .login:hover {
+    border-bottom: 1px solid white; /* Adds an underline on hover, similar to menu items */
+}
+.login-container button .register {
+    display: inline-block;
+    padding: 8px 40px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.login-container button .register:hover {
+    background-color: #bec6cf; /* Darker shade on hover for visual feedback */
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid white;
+}
+
+.login-container { /*login and register both */
+    margin-right: 90px;
+    display: flex;
+    align-items: center;
+}
+.bottom-header{
+    text-align: left;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: auto; 
+    max-width: 50%;
+    font-family: serif
+}
+
+input[type="text"] {
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; /* Adds a light grey border */
+    border-radius: 10px; /* Applies rounded corners with a radius of 10px */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px; 
+    color: #333; 
+    background-color: #fff; /
+}
+
+
+/*MAIN BODY*/
+
+main {
+    width: calc(100% - 40px); /* Subtracting 40px to account for 20px margin on both sides */
+    margin: 20px auto;
+    background: white; /* Specific background for content areas */
+    padding: 20px;
+}
+section#services {
+    width: 100%; /* Ensures the section takes full width of its parent */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    padding: 30px 0;
+}
+
+section#services ul {
+    display: grid;
+    width: 100%; 
+    grid-template-columns: repeat(4, 1fr); /* Creates four equal columns */
+    grid-gap: 10px; 
+    padding: 0;
+    margin: 0 auto; /* Center the list in the section */
+}
+
+section#services ul li {
+    background-color: white;
+    height: 100px; /*height for each item */
+    padding-top: 50px; /* Extra space for the icon */
+    border-radius: 5px;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+
+
+
+section {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #10143b;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
