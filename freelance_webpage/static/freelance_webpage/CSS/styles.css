@@ -5,7 +5,6 @@ body, html {
     font-family: Arial, sans-serif;
     background-color: #ffffff; /* General background color for the body */
 }
-
 header {
     background-image: url("../Images/home_bg.png");
     background-repeat: no-repeat;
@@ -36,12 +35,10 @@ img{
 img {
     margin-left: 40px;
 }
-
 nav {
     flex-grow: 1;
     text-align: center;
 }
-
 nav ul {
     list-style: none;
     padding: 0;
@@ -49,11 +46,9 @@ nav ul {
     display: flex;
     justify-content: center;
 }
-
 nav ul li {
     margin: 0 20px;
 }
-
 nav ul li a, .login-container button.login{
     color: white;
     text-decoration: none;
@@ -65,8 +60,7 @@ nav ul li a, .login-container button.login{
     cursor: pointer;
     background: none;
 }
-
-
+/*about part*/
 .about{
     background-image: url("../Images/about_us.png");
     background-repeat: no-repeat;
@@ -92,7 +86,6 @@ nav ul li a, .login-container button.login{
     font-size: 18px;
     margin-right: 20px;
 }
-
 .login-container button.login:hover {
     border-bottom: 1px solid white; /* Adds an underline on hover, similar to menu items */
 }
@@ -134,7 +127,6 @@ nav ul li a:hover {
     max-width: 50%;
     font-family: serif
 }
-
 input[type="text"] {
     width: 100%; 
     padding: 10px; 
@@ -145,9 +137,6 @@ input[type="text"] {
     color: #333; 
     background-color: #fff; /
 }
-
-
-
 /*MAIN BODY*/
 
 main {
@@ -187,22 +176,91 @@ section#services ul li {
     justify-content: center; 
     align-items: center; 
 }
-
 section#services ul li:hover{
     transform: translateY(-10px);
     transition: .4s;
+} 
+/*Footer part*/
+footer{
+    background-color: #10143b;
+}
+.footerContainer{
+ width: 100%;
+ padding: 10px 10px 10px;
+}
+.socialicons{
+    display: flex;
+    justify-content: center;
 }
 
+.socialicons a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+.socialicons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+/* Hover Effects On Social medial Icons*/
+.socialicons a:hover{
+    background-color: #111;
+    transition: 0.5s;
+}
+.socialicons a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+.footerNav{
+    margin: 30px 0;
+}
+.footerNav ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+.footerNav ul li a{
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+.footerNav ul li a:hover{
+    opacity: 1;
+    color: red;
+}
+.footerBottom{
+    background-color: #10143b;
+    padding: 20px;
+    text-align: center;
+}
+.footerBottom p{
+    color: white;
+}
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin:  0px 5px;
+}
+@media (max-width: 700px){
+    .footerNav ul{
+        flex-direction: column;
+    }
+    .footerNav ul li{
+        width: 100%;
+        text-align: center;
+        margin: 10px;
+    }
+}
 section {
     margin-bottom: 20px;
 }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #10143b;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
+
