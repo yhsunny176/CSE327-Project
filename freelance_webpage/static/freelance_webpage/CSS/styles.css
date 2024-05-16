@@ -7,7 +7,7 @@ body, html {
 }
 
 header {
-    background-image: url("Images/home_bg.png");
+    background-image: url("../Images/home_bg.png");
     background-repeat: no-repeat;
     background-size:cover;
     background-position: center;
@@ -54,7 +54,7 @@ nav ul li {
     margin: 0 20px;
 }
 
-nav ul li a, .login-container button .login{
+nav ul li a, .login-container button.login{
     color: white;
     text-decoration: none;
     font-size: 16px;
@@ -66,10 +66,16 @@ nav ul li a, .login-container button .login{
     background: none;
 }
 
-.login-container button .login:hover {
+.login-container p {
+    color: white;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.login-container button.login:hover {
     border-bottom: 1px solid white; /* Adds an underline on hover, similar to menu items */
 }
-.login-container button .register {
+.login-container button.register, .login-container button.logout{
     display: inline-block;
     padding: 8px 40px;
     background-color: #ffffff;
@@ -80,7 +86,7 @@ nav ul li a, .login-container button .login{
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.login-container button .register:hover {
+.login-container button.register:hover,  .login-container button.logout:hover {
     background-color: #bec6cf; /* Darker shade on hover for visual feedback */
 }
 
@@ -118,6 +124,7 @@ input[type="text"] {
     color: #333; 
     background-color: #fff; /
 }
+
 
 
 /*MAIN BODY*/
