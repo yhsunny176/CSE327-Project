@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelancer Portfolio</title>
+    <title>JustaJob</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/styles.css' %}">
 </head>
@@ -14,7 +14,9 @@
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#services">services</a></li>
                     <li><a href="#browsejobs">Browse Jobs</a></li>
+                    <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -53,10 +55,9 @@
         <section id="home">
             <h2>Hire Experts Based on Category</h2>
             <h4>Find experts from 10+ skills</h4>
-        </section>
-       
+        </section>   
         <section id="services">
-            <ul>
+          <ul>
                 <li>Development & Coding</li>
                 <li>Design & Creative</li>
                 <li>Digital Marketing</li>
@@ -67,11 +68,28 @@
                 <li>AI</li>
             </ul>
         </section>
-        <section id="hire">
-            <h2>Also in Just a Job, Get Hired & Find Great Work</h2>
-            <p>work with clients on our platform to take your career to the next level</p>
-        </section>
+
     </main>
+
+     <!--About-->
+    
+     <section class="about container"= id ="about">
+        <div class ="about-Images">
+            <Images src="Images/about_us.png" alt="project 1">
+            </div>
+            <div class= "about-text">
+                
+                <h2>We provide the best <br> services For You !</h2>
+                <p>Our team consists of industry experts passionate about the freelancing world.
+                <p>Join a vibrant community with plenty of networking and growth opportunities.
+                <p>Collaborating with industry leaders to provide top-notch freelance services. 
+                <p>We implement robust security measures and verify users to ensure peace of mind.
+                <p>work with clients on our platform to take your career to the next level
+                <p>Check out real stories of successful collaborations and satisfied users. </p>
+                <a href="#" class="btn">Learn More</a>
+                </div>
+            </section>
+    
     <footer>
         <p>Copyright © 2024 JustAJob. All rights reserved.</p>
     </footer>

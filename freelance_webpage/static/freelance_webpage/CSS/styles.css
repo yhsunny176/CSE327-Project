@@ -66,6 +66,27 @@ nav ul li a, .login-container button.login{
     background: none;
 }
 
+
+.about{
+    background-image: url("../Images/about_us.png");
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2rem,auto));
+    gap:2rem;
+}
+.about-Images img{
+    border-radius: 3rem 0 3rem 3rem;
+}
+
+.about-text h2{
+    front-size: 1.7rem;
+}
+
+.about-text p {
+    front-size: 0.938rem;
+    margin: 1rem 0 1rem;
+}
+
 .login-container p {
     color: white;
     font-size: 18px;
@@ -136,6 +157,7 @@ main {
     padding: 20px;
 }
 section#services {
+    
     width: 100%; /* Ensures the section takes full width of its parent */
     display: flex;
     justify-content: center; /* Center the content horizontally */
@@ -152,20 +174,24 @@ section#services ul {
 }
 
 section#services ul li {
-    background-color: white;
+    background-image: url("../Images/p2.png");
+    background-repeat: no-repeat;
     height: 100px; /*height for each item */
-    padding-top: 50px; /* Extra space for the icon */
-    border-radius: 5px;
+    padding-top: 150px; /* Extra space for the icon */
+    border-radius: 40px;
     color: #333;
     font-weight: bold;
+    font-size: larger;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     display: flex;
     justify-content: center; 
     align-items: center; 
 }
 
-
-
+section#services ul li:hover{
+    transform: translateY(-10px);
+    transition: .4s;
+}
 
 section {
     margin-bottom: 20px;
@@ -180,4 +206,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
