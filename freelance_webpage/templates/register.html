@@ -5,113 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <title>JustaJob Register</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-        }
-        .container {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-        .register-image {
-            width: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f1f1f1;
-        }
-        .register-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .register-form {
-            width: 50%;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .register-form img {
-            display: block;
-            margin: 0 auto 20px;
-        }
-        .register-form h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .register-form p {
-            color: #666;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .register-form label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .register-form input[type="text"],
-        .register-form input[type="email"],
-        .register-form input[type="password"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .register-form .terms {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .register-form .terms input {
-            margin-right: 5px;
-        }
-        .register-form .terms a {
-            color: #007bff;
-        }
-        .register-form button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .register-form .login-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .register-form .login-link a {
-            color: #007bff;
-        }
-        .register-form .role-buttons {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .register-form .role-buttons button {
-            width: 150px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 0 10px;
-        }
-        .register-form .role-buttons button.active {
-            background-color: #007bff;
-            color: #fff;
-            border-color: #007bff;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/register.css' %}">
 </head>
 <body>
     <div class="container">
@@ -122,18 +16,20 @@
         <!-- Right side: register form occupying half the page -->
         <div class="register-form">
             <!-- Logo image -->
-            <img src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="JustaJob Logo" width="150">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="JustaJob Logo" width="150">
+            </a>
             <!-- Form title -->
             <h1>Sign up</h1>
             <!-- Form description -->
             <p>Let’s get you all set up so you can access your personal account.</p>
             <!-- Role selection buttons -->
             <div class="role-buttons">
-                <button type="button" class="active">As Freelancer</button>
-                <button type="button">As Employer</button>
+                <button type="button" class="active" onclick="setRole('freelancer')">As Freelancer</button>
+                <button type="button" onclick="setRole('employer')">As Employer</button>
             </div>
             <!-- Register form -->
-            <form action="register" method="post">
+            <form method="POST" action="{% url 'register' %}" id="registerform">
                 {% csrf_token %}
                 <!-- First Name input -->
                 <label for="first-name">First Name</label>
@@ -165,8 +61,9 @@
                     <label for="terms">I agree to all the <a href="#">Terms</a> and <a href="#">Privacy Policies</a></label>
                 </div>
                 
-                <!-- Submit button -->
+                <!-- Submit button -->    
                 <button type="submit">Create account</button>
+                
             </form>
             <!-- Login link -->
             <div class="login-link">
@@ -174,5 +71,18 @@
             </div>
         </div>
     </div>
+    <script>
+        function setRole(role) {
+            const buttons = document.querySelectorAll('.role-buttons button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            if (role === 'freelancer') {
+                buttons[0].classList.add('active');
+            } else if (role === 'employer') {
+                buttons[1].classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>

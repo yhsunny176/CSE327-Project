@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freelancer Portfolio</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'freelance_webpage/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/styles.css' %}">
 </head>
 <body>
     <header>
@@ -20,15 +20,25 @@
             </nav>
             <div class="login-container">
                 
+                {% if user.is_authenticated %}
+                    <p>Welcome, {{ user.first_name }}!</p>
+                    <form action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="logout">Logout</button>
+                    </form>
+                {% else %}
 
-                    <form action="{% url 'login' %}">
+                    <form action="{% url 'login' %}" method="POST">
+                        {% csrf_token %}
                         <button type="submit" class="login">Sign in</button>
                     </form>
 
                     <form action="{% url 'register' %}">
+                        {% csrf_token %}
                         <button type="submit" class="register">Join</button>
                     </form>
-            
+                {% endif %}
+            <!-- end statement here -->
                 <p id="welcomeMessage" style="color: white;"></p>
             </div>
         </div>
