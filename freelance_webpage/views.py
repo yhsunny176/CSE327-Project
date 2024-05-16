@@ -40,13 +40,30 @@ def register(request):
 
 
 def login(request):
-    if request.method == "POST":
-        email = request.POST['email']
-        password = request.POST['pass1']
+    if request.user.is_authenticated:
+        messages.info(request, "You are already logged in.")
+        return redirect('index')
 
-        
+    if request.method == "POST":
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        if not email or not password:
+            messages.error(request, "Please fill out all fields")
+            return render(request, "login.html")
+
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            auth_login(request, user)
+            messages.success(request, f"Welcome back, {user.first_name}!")
+            return redirect('index')
+        else:
+            messages.error(request, "Invalid credentials")
+            return render(request, "login.html")
 
     return render(request, "login.html")
+        
 
 def logout(request):
-    pass
+    auth_logout(request)
+    return redirect('index')
