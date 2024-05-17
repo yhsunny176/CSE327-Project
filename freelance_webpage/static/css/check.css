@@ -1,0 +1,49 @@
+.cat{
+  padding: 30px;
+  float: left;
+}
+
+.cat label {
+  width: 160px; 
+  background: transparent;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+.cat label:hover span{
+  background: #0060aa;
+  border: 1px solid #0060aa;
+  color: #fff;
+  cursor: pointer;
+}
+.cat label span {
+  text-align: center;
+   border-radius: 30px;
+  display: block;
+  padding: 8px 12px;
+  border: 1px solid #797979;
+}
+
+.cat label input {
+  position: absolute;
+  display: none;
+  color: #797979 !important;
+}
+/* selects all of the text within the input element and changes the color of the text */
+.cat label input + span{color: #797979;}
+
+
+/* This will declare how a selected input will look giving generic properties */
+.cat input:checked + span {
+    color: #ffffff;
+    
+}
+
+
+/*
+This following statements selects each category individually that contains an input element that is a checkbox and is checked (or selected) and chabges the background color of the span element.
+*/
+
+.action input:checked + span{
+  background-color: #0060aa;
+  border-radius: 30px;
+}
