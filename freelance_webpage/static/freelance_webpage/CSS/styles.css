@@ -73,11 +73,11 @@ nav ul li a, .login-container button.login{
 }
 
 .about-text h2{
-    front-size: 1.7rem;
+    font-size: 1.7rem;
 }
 
 .about-text p {
-    front-size: 0.938rem;
+    font-size: 0.938rem;
     margin: 1rem 0 1rem;
 }
 
