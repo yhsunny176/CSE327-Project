@@ -23,7 +23,7 @@
 <body class="page-bg">
     <div id="preloader">
         <div id="status">
-            <img src="{% static 'images/preloader.svg' %}" id="preloader_image" alt="loader">
+            <img src="{% static 'freelance_webpage/Images/preloader.svg' %}" id="preloader_image" alt="loader">
         </div>
     </div>
     <!-- return to top -->
@@ -49,7 +49,7 @@
                                         <a class="nav-link" href="{% url 'index' %}">Home</a>
                                     </li>
                                     <li class="nav-item menu-click ps-rel">
-                                        <a class="nav-link" href="#">Services
+                                        <a class="nav-link" href="javascript:void(0);">Services
                                             <span><i class="fas fa-chevron-down"></i></span>
                                         </a>
                                         <ul class="dropdown-items menu-open">
@@ -92,20 +92,37 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="post-form-wrapper float_left">
-                            <form>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
                                 <h4>Choose a name for your project</h4>
                                 <div class="form-group row">
                                     <div class="col-md-12 col-12">
                                         <label>Project Name</label>
-                                        <input type="text" placeholder="Enter here project title...">
+                                        <input type="text" name="name" placeholder="Enter here project title...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12 col-12">
+                                        <label>Project Category</label>
+                                        <div class="select-field">
+                                            <select name="category">
+                                                <option value="development_and_coding">Design & Development</option>
+                                                <option value="design_and_creative" selected>Design & Creative</option>
+                                                <option value="digital_marketing">Digital Marketing</option>
+                                                <option value="writing_and_translation">Writing & Translation</option>
+                                                <option value="video_and_music">Video & Music</option>
+                                                <option value="3d_design">3D Design</option>
+                                                <option value="business">Business</option>
+                                                <option value="ai">AI</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <h4>Tell us more about your project</h4>
                                 <div class="form-group row">
                                     <div class="col-md-12 col-12">
-                                        <label>Start With A Bit About Yourself Or Your Business, And Include An Overview
-                                            Of What You Need Done.</label>
-                                        <textarea rows="4" cols="50"
+                                        <label>Start With A Bit About Your Project.</label>
+                                        <textarea rows="4" cols="50" name="description"
                                             placeholder="Describe your project here..."></textarea>
                                     </div>
                                 </div>
@@ -125,11 +142,11 @@
                                     <div class="col-md-12 col-12">
                                         <label>Upload any images or document that might be helpful in explaning your
                                             project brief here.</label>
-                                        <input class="file-doc" type="file">
+                                        <input name="attached_file" class="file-doc" type="file">
                                     </div>
                                 </div>
+                                <button class="custom-btn" type="submit"><span>Post Project</span></button>
                             </form>
-                            <a class="custom-btn" href="#"> <span>Post Project</span> </a>
                         </div>
                     </div>
                 </div>

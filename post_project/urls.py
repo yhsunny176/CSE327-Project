@@ -3,5 +3,6 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-path('postproject', views.post_project, name='postproject'),
+    path('postproject', views.post_project, name='postproject'),
+    path('postsuccess', views.post_success, name='postsuccess'),
 ]
