@@ -1,7 +1,10 @@
-from django.urls import path
-from . import views
+from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
-    path('profile/', views.profile, name='profile'),
-]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('admin/', admin.site.urls),
+    path('', include('freelance_webpage.urls')),
+    path('', include('post_project.urls')),
+    path('profile/', include('profiles.urls')),  # Add this line
+]
 
