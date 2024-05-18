@@ -1,7 +1,9 @@
 @charset "UTF-8";
-/*-------------------------------------
-CSS FILE
---------------------------*/
+/**
+ * 1.1 CSS Start
+ *
+ * Css styles starts here.
+ */
 body,
 html {
   font-family: "Lato", sans-serif;
@@ -241,9 +243,13 @@ a.button-btn span, button.button-btn span {
   justify-content: flex-end;
 }
 
+/**
+ * 2.1 Preloader Section
+ *
+ * preloader css codes.
+ */
 
-
-/*-- Preloader css start --*/
+/* Preloader css start */
 #preloader {
   background-color: #fff;
   bottom: 0;
@@ -270,96 +276,9 @@ a.button-btn span, button.button-btn span {
   -o-transform: translate(-50%, -50%);
 }
 
-/*-- Preloader css End --*/
-.page2-btn {
-  padding: 7px 25px;
-  background-color: #004274;
-  color: #fff;
-  display: inline-block;
-  text-align: center;
-  line-height: 40px;
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
-  transition: 0.5s ease-in-out;
-  z-index: 1111;
-}
-.page2-btn:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #00b3ff;
-  transform: translateY(-100%);
-  transition: all 0.5s;
-  z-index: -1;
-}
-.page2-btn:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #00b3ff;
-  transform: translateY(100%);
-  transition: all 0.5s;
-  z-index: -1;
-}
-.page2-btn:hover {
-  color: #fff !important;
-}
-.page2-btn:hover:before {
-  transform: translateY(-48%);
-  z-index: -1;
-}
-.page2-btn:hover:after {
-  transform: translateY(48%);
-  z-index: -8;
-}
+/* Preloader css End */
 
-.bg-change {
-  background-color: #00b3ff;
-}
-.bg-change:before {
-  background-color: #004274;
-}
-.bg-change::after {
-  background-color: #004274;
-}
-
-.ptb-100 {
-  padding: 100px 0px;
-}
-
-.page-bg {
-  background-color: #f2f5fc;
-  padding-right: 0px !important;
-  overflow: visible !important;
-}
-
-.apply-job-modal .modal-header h5 {
-  text-align: center;
-  width: 100%;
-  font-size: 18px;
-}
-
-.apply-job-modal .modal-body .content-box span {
-  font-size: 20px;
-}
-
-.apply-job-modal .modal-body .content-box a {
-  color: #0060aa;
-}
-
-.apply-job-modal .modal-body .content-box p {
-  padding: 15px 0px;
-  border-top: 1px solid #ccc;
-  margin-top: 16px;
-}
-
+/* Other CSS */
 iframe {
   width: 100%;
 }
@@ -501,13 +420,15 @@ iframe {
   background-color: none;
   border: none;
 }
+/* Other CSS */
 
-/* ....................................
-1.1 Header CSS 
-.......................................*/
-/*--------
-header css
---------*/
+/**
+ * 2.2 Header
+ *
+ * Header includes navbar styles.
+ */
+
+ /* Header css start */
 .main-header-wrapper1 {
   position: relative;
   z-index: 999;
@@ -665,9 +586,26 @@ header css
   background-color: #0060aa;
 }
 
-/* ....................................
-1.1 Inner CSS 
-.......................................*/
+.menu-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #111111;
+  z-index: 10000;
+  -o-box-shadow: 0px 0px 25px -10px;
+  -ms-box-shadow: 0px 0px 25px -10px;
+  box-shadow: 0px 0px 15px -15px;
+}
+/* Header css end */
+
+/**
+ * 2.3 Inner CSS
+ *
+ * Inner CSS includes form styles for post projects.
+ */
+
+ /* Inner css Start */
 .inner-main-header {
   background-color: #fff;
 }
@@ -696,7 +634,7 @@ header css
 
 
 .inner-page-main-wrapper .post-project-main-wrapper {
-  background: #fff;
+  background: #f1f1f1;
   border-radius: 8px;
   padding: 40px;
   margin-top: 30px;
@@ -824,12 +762,16 @@ header css
   padding-top: 6px;
   line-height: 24px;
 }
+/* Inner css end */
 
 
+/**
+ * 2.4 Footer CSS
+ *
+ * Footer styles.
+ */
 
-/* ....................................
-1.1 Footer CSS 
-.......................................*/
+ /* Footer css Start */
 .footer-main-wrapper .bottom-footer {
   background-color: #000;
   margin-top: 50px;
@@ -839,24 +781,9 @@ header css
 .footer-main-wrapper .bottom-footer p {
   color: rgba(255, 255, 255, 0.6588235294);
 }
+/* Footer css end */
 
-/* ....................................
-Other CSS 
-.......................................*/
-
-
-.menu-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #111111;
-  z-index: 10000;
-  -o-box-shadow: 0px 0px 25px -10px;
-  -ms-box-shadow: 0px 0px 25px -10px;
-  box-shadow: 0px 0px 15px -15px;
-}
-
+/* return to top start */
 #return-to-top {
   position: fixed;
   bottom: 43px;
@@ -887,11 +814,15 @@ Other CSS
   color: #fff;
   top: 5px;
 }
+/* return to top start */
 
+
+/* custom container */
 .custom-container {
   max-width: 1700px;
 }
 
+/* Track */
 .custom-check::-webkit-scrollbar {
   width: 5px;
 }

@@ -1,0 +1,76 @@
+{% load static %}
+<!-- header start -->
+<div class="main-header-wrapper1 inner-main-header float_left">
+    <div class="sb-main-header1">
+        <div class="menu-items-wrapper menu-item-wrapper3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
+            <div class="container custom-container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="index1-logo">
+                            <a href="{% static 'index.html' %}">
+                                <img class="normal-logo" src="{% static 'freelance_webpage/Images/logo_color.png' %}"
+                                    alt="logo">
+                                <img class="sticky-logo" src="{% static 'freelance_webpage/Images/logo.png' %}"
+                                    alt="logo">
+                            </a>
+                        </div>
+                        <nav class="navbar navbar-expand-lg">
+                            <ul class="navbar-nav">
+                                {% if user.is_authenticated %}
+                                    {% if user.userprofile.role == 'freelancer' %}
+                                        <li class="nav-item menu-click5 ps-rel">
+                                            <a class="nav-link" href="{% url 'freelancer_dashboard' %}">Home</a>
+                                        </li>
+                                    {% elif user.userprofile.role == 'employer' %}
+                                        <li class="nav-item menu-click5 ps-rel">
+                                            <a class="nav-link" href="{% url 'employer_dashboard' %}">Home</a>
+                                        </li>
+                                    {% endif %}
+                                {% else %}
+                                    <li class="nav-item menu-click5 ps-rel">
+                                        <a class="nav-link" href="#">Home</a>
+                                    </li>
+                                {% endif %}
+                                <li class="nav-item menu-click ps-rel">
+                                    <a class="nav-link" href="javascript:void(0);">Services
+                                        <span><i class="fas fa-chevron-down"></i></span>
+                                    </a>
+                                    <ul class="dropdown-items menu-open">
+                                        {% if user.is_authenticated and user.userprofile.role == 'freelancer' %}
+                                            <li><a href="{% url 'postproject' %}">Post Project</a></li>
+                                            <li><a href="#">My Projects</a></li>
+                                            <li><a href="#">My Portfolio</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'postproject' %}">Post Project</a></li>
+                                            <li><a href="#">My Project Listings</a></li>
+                                            <li><a href="#">Search Freelancers</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contact Support</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- logout button -->
+                    <div class="col-lg-4 col-md-6">
+                        {% if user.is_authenticated %}
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <ul class="d-xl-flex d-lg-flex d-md-none d-sm-none d-none justify-content-end align-items-center">
+                                    <li class="post-drop">
+                                        <button type="submit" class="post-btn">Sign Out</button>
+                                    </li>
+                                </ul>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header end -->

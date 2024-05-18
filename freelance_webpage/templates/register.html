@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>JustaJob Register</title>
     <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/register.css' %}">
 </head>
+
 <body>
     <div class="container">
         <!-- Left side: image occupying half the page -->
@@ -25,7 +27,7 @@
             <p>Let’s get you all set up so you can access your personal account.</p>
             <!-- Role selection buttons -->
             <div class="role-buttons">
-                <button type="button" class="active" onclick="setRole('freelancer')">As Freelancer</button>
+                <button type="button" onclick="setRole('freelancer')">As Freelancer</button>
                 <button type="button" onclick="setRole('employer')">As Employer</button>
             </div>
             <!-- Register form -->
@@ -34,36 +36,40 @@
                 <!-- First Name input -->
                 <label for="first-name">First Name</label>
                 <input type="text" id="first-name" name="fname" Required>
-                
+
                 <!-- Last Name input -->
                 <label for="last-name">Last Name</label>
                 <input type="text" id="last-name" name="lname" required>
-                
+
                 <!-- Email input -->
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
-                
+
                 <!-- Phone Number input -->
                 <label for="phone-number">Phone Number</label>
                 <input type="text" id="phone-number" name="phone_number" required>
-                
+
                 <!-- Password input -->
                 <label for="password">Password</label>
                 <input type="password" id="password" name="pass1" required>
-                
+
                 <!-- Confirm Password input -->
                 <label for="confirm-password">Confirm Password</label>
                 <input type="password" id="confirm-password" name="pass2" required>
-                
+
+                <!-- Hidden input fields for both "freelancer" and "employer" roles -->
+                <input type="hidden" id="role" name="role" value="">
+
                 <!-- Terms and Privacy Policy checkbox -->
                 <div class="terms">
                     <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">I agree to all the <a href="#">Terms</a> and <a href="#">Privacy Policies</a></label>
+                    <label for="terms">I agree to all the <a href="#">Terms</a> and <a href="#">Privacy
+                            Policies</a></label>
                 </div>
-                
-                <!-- Submit button -->    
+
+                <!-- Submit button -->
                 <button type="submit">Create account</button>
-                
+
             </form>
             <!-- Login link -->
             <div class="login-link">
@@ -79,10 +85,15 @@
             });
             if (role === 'freelancer') {
                 buttons[0].classList.add('active');
+                // Set the value of the hidden input field for "freelancer"
+                document.getElementById('role').value = 'freelancer';
             } else if (role === 'employer') {
                 buttons[1].classList.add('active');
+                // Set the value of the hidden input field for "employer"
+                document.getElementById('role').value = 'employer';
             }
         }
-    </script>
+    </script>    
 </body>
+
 </html>
