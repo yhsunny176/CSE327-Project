@@ -44,6 +44,19 @@ $('#return-to-top').click(function () {
 });
 
 // post job
+$(document).ready(function () {
+    $(".menu-click").click(function () {
+        $(".menu-open").slideToggle();
+    });
+    $('body').on('click', function (e) {
+        if (!$('.menu-click').is(e.target)
+            && $('.menu-click').has(e.target).length === 0
+            && $('.open').has(e.target).length === 0
+        ) {
+            $('.menu-open').slideUp();
+        }
+    });
+});
 
 
 $(document).ready(function () {

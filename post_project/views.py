@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from . import models
 
-# Create your views here.
+@login_required
 def post_success(request):
-    return render(request, "post_project/postsuccess.html") 
+    user = request.user
+    return render(request, "post_project/clientprojects.html", {'user': user}) 
 
+@login_required
 def post_project(request):
     if request.method == 'POST':
         pname = request.POST['name']
@@ -15,7 +19,7 @@ def post_project(request):
         
         attached_file = request.FILES['attached_file']
         
-        project =  models.Project(
+        project = models.Project(
             project_name=pname,
             category=category,
             project_description=description,
@@ -27,6 +31,6 @@ def post_project(request):
         # Save the project object
         project.save()
         
-        return redirect('postsuccess')
-        
-    return render(request, 'post_project/postproject.html')
+        return redirect('clientprojects')
+    else:
+        return render(request, 'post_project/postproject.html')
