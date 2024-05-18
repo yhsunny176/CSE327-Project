@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Freelancer Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'profiles/styles.css' %}">
+</head>
+
+<body>
+    <h1>Update Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <button type="submit">Save changes</button>
+    </form>
+</body>
+
+</html>
