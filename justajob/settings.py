@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'post_project'
+    'post_project',  # Ensure this line is present
+    'profiles',  # Add profiles app
+    'post_project',  # Ensure post_project is also added
+    'django_cleanup',  # Add django_cleanup app
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

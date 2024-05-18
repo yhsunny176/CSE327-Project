@@ -19,7 +19,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('freelance_webpage.urls')),
-    path('', include('post_project.urls')),
-    path('profile/', include('profiles.urls')), 
+    path('', include('freelance_webpage.urls')),  # Include URLs from freelance_webpage app
+    path('', include('post_project.urls')),  # Include URLs from post_project app
+    path('profile/', include('profiles.urls')),  # Include URLs from profiles app
 ]
