@@ -389,6 +389,45 @@ footer{
     font-weight: 400;
     margin:  0px 5px;
 }
+/* Message styles */
+ul.messages {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.messages li {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Specific styles for different message tags */
+ul.messages li.error {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Red border */
+}
+
+ul.messages li.success {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    border: 1px solid #c3e6cb; /* Green border */
+}
+
+ul.messages li.info {
+    background-color: #d1ecf1; /* Light blue background */
+    color: #0c5460; /* Dark blue text */
+    border: 1px solid #bee5eb; /* Blue border */
+}
+
+ul.messages li.warning {
+    background-color: #fff3cd; /* Light yellow background */
+    color: #856404; /* Dark yellow text */
+    border: 1px solid #ffeeba; /* Yellow border */
+}
 @media (max-width: 700px){
     .footerNav ul{
         flex-direction: column;
@@ -424,6 +463,7 @@ footer{
     .bottom-header{
         display: none;
     }
+
 }
 section {
     margin-bottom: 20px;
