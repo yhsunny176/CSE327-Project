@@ -1,8 +1,9 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.urls import reverse
+from .models import UserProfile
 
 # Create your views here.
 def index(request):
@@ -11,6 +12,11 @@ def index(request):
     list(storage)  # This will mark all messages as read
     return render(request, "index.html")
 
+def freelancer_dashboard(request):
+    return render(request, "dashboards/freelancer-dboard.html")
+
+def employer_dashboard(request):
+    return render(request, "dashboards/employer-dboard.html")
 
 def register(request):
     if request.method == "POST":
