@@ -5,9 +5,11 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.urls import reverse
 from .models import UserProfile
 
-
 # Create your views here.
 def index(request):
+    # Clear all messages
+    storage = messages.get_messages(request)
+    list(storage)  # This will mark all messages as read
     return render(request, "index.html")
 
 def freelancer_dashboard(request):
@@ -15,7 +17,6 @@ def freelancer_dashboard(request):
 
 def employer_dashboard(request):
     return render(request, "dashboards/employer-dboard.html")
-
 
 def register(request):
     if request.method == "POST":
@@ -52,6 +53,10 @@ def register(request):
 
 
 def login(request):
+    # Clear all messages when rendering the login view
+    storage = messages.get_messages(request)
+    list(storage)  # This will mark all messages as read
+
     if request.user.is_authenticated:
         user_profile = UserProfile.objects.get(user=request.user)
         messages.info(request, "You are already logged in.")
@@ -81,6 +86,14 @@ def login(request):
         else:
             messages.error(request, "Invalid credentials")
             return render(request, "login.html")
+        if email and password:
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                auth_login(request, user)
+                messages.success(request, f"Welcome back, {user.first_name}!")
+                return redirect('index')
+            else:
+                messages.error(request, "Invalid credentials")
 
     return render(request, "login.html")
         
