@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'freelance_webpage',
     'post_project',
     'clientprojects',
+    'client_profile'
 
 ]
 
@@ -127,6 +128,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'freelance_webpage/static/'),
 ]
+
+#Client Pictures Url
+CLIENT_PICS_MEDIA_URL = '/client_pics/'
+
+CLIENT_PICS_MEDIA_ROOT = os.path.join(BASE_DIR, 'client_pics')
+
+DEFAULT_PICS_MEDIA_URL = '/default_pics/'
+
+DEFAULT_PICS_MEDIA_ROOT = os.path.join(BASE_DIR, 'default_pics')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

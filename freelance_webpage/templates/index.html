@@ -15,9 +15,18 @@
             <img src="{% static 'freelance_webpage/Images/logo.png' %}" alt="Company Logo" style="height: 30px;">
             <nav>
                 <ul>
+                    
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#services">services</a></li>
-                    <li><a href="#browsejobs">Browse Jobs</a></li>
+                    <li><a href="#services">Services</a></li>
+                    {% if user.userprofile.role == 'freelancer' %}
+                    <li class="nav-item menu-click5 ps-rel">
+                        <a class="nav-link" href="{% url 'freelancer_dashboard' %}">Dashboard</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item menu-click5 ps-rel">
+                        <a class="nav-link" href="{% url 'employer_dashboard' %}">Dashboard</a>
+                    </li>
+                  {% endif %}
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>

@@ -11,13 +11,10 @@
 
 <body>
     <div class="container">
-        <!-- Left side: image occupying half the page -->
         <div class="register-image">
             <img src="{% static 'freelance_webpage/Images/register.png' %}" alt="Register Image">
         </div>
-        <!-- Right side: register form occupying half the page -->
         <div class="register-form">
-            <!-- Logo image -->
             <a href="{% url 'index' %}">
                 <img src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="JustaJob Logo" width="150">
             </a>
@@ -30,30 +27,25 @@
                 <button type="button" onclick="setRole('freelancer')">As Freelancer</button>
                 <button type="button" onclick="setRole('employer')">As Employer</button>
             </div>
+
             <!-- Register form -->
             <form method="POST" action="{% url 'register' %}" id="registerform">
                 {% csrf_token %}
-                <!-- First Name input -->
                 <label for="first-name">First Name</label>
                 <input type="text" id="first-name" name="fname" Required>
 
-                <!-- Last Name input -->
                 <label for="last-name">Last Name</label>
                 <input type="text" id="last-name" name="lname" required>
-
-                <!-- Email input -->
+                
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
 
-                <!-- Phone Number input -->
                 <label for="phone-number">Phone Number</label>
                 <input type="text" id="phone-number" name="phone_number" required>
 
-                <!-- Password input -->
                 <label for="password">Password</label>
                 <input type="password" id="password" name="pass1" required>
 
-                <!-- Confirm Password input -->
                 <label for="confirm-password">Confirm Password</label>
                 <input type="password" id="confirm-password" name="pass2" required>
 
@@ -71,13 +63,15 @@
                 <button type="submit">Create account</button>
 
             </form>
-            <!-- Login link -->
             <div class="login-link">
                 Already have an account? <a href="{% url 'login' %}">Login</a>
             </div>
         </div>
     </div>
+
+    <!-- custom javascript -->
     <script>
+        //set role based on user button selection
         function setRole(role) {
             const buttons = document.querySelectorAll('.role-buttons button');
             buttons.forEach(button => {
@@ -93,7 +87,40 @@
                 document.getElementById('role').value = 'employer';
             }
         }
-    </script>    
+
+        //Capitalize first letter of first name and last name
+        function capitalizeFirstLetter(value) {
+            return value.charAt(0).toUpperCase() + value.slice(1);
+        }
+
+        document.getElementById('first-name').addEventListener('blur', function () {
+            this.value = capitalizeFirstLetter(this.value);
+        });
+
+        document.getElementById('last-name').addEventListener('blur', function () {
+            this.value = capitalizeFirstLetter(this.value);
+        });
+
+        function validateForm() {
+            var role = document.getElementById('role').value;
+            if (!role) {
+                alert('Please select a role (Freelancer or Employer)');
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+
+        // Add an event listener to the form submission
+        document.getElementById('registerform').addEventListener('submit', function (event) {
+            // Check if any of the buttons is in the active state
+            const buttons = document.querySelectorAll('.role-buttons button');
+            const activeButton = Array.from(buttons).find(button => button.classList.contains('active'));
+            if (!activeButton) {
+                alert('Please select a role by clicking one of the buttons.');
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
 </body>
 
 </html>
