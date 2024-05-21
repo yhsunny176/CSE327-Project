@@ -16,9 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('freelance_webpage.urls')),
     path('', include('post_project.urls')),
+    path('', include('clientprojects.urls')),
+    path('', include('client_profile.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.CLIENT_PICS_MEDIA_URL, document_root=settings.CLIENT_PICS_MEDIA_ROOT)
+    urlpatterns += static(settings.DEFAULT_PICS_MEDIA_URL, document_root=settings.DEFAULT_PICS_MEDIA_ROOT)

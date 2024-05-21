@@ -1,12 +1,137 @@
-<!-- project_success.html -->
-
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Project Posted Successfully</title>
-</head>
-<body>
-    <h1>Project Posted Successfully!</h1>
-    <!-- Add any additional content or links here -->
-</body>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Projects</title>
+    <!-- css links -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'freelance_webpage/Images/fav-icon.svg' %}" />
+  </head>
+
+  <body class="page-bg">
+    <div id="preloader">
+      <div id="status">
+        <img src="{% static 'freelance_webpage/Images/preloader.svg' %}" id="preloader_image" alt="loader" />
+      </div>
+    </div>
+    <!-- return to top -->
+    <a href="javascript:void(0);" id="return-to-top" class="change-bg2"><i class="fas fa-angle-double-up"></i></a>
+
+    <!-- navbar inheritance -->
+    {% include 'common/navbar.html' %}
+    <!-- navbar end -->
+
+    <!-- inner page start -->
+    <div class="inner-page-main-wrapper float_left">
+      <div class="container project-cards">
+        <div class="home1-section-heading1 mb-4">
+          <h6>Project Listing</h6>
+          <h4>Project Listing 3 column</h4>
+        </div>
+        <div class="row">
+          {% for project in project_details %}
+            <div class="ewr-cards col-lg-4 col-md-4 col-sm-12 col-12">
+              <div class="ewr_search_infobox">
+                <div class="ewr_search_proj w-100">
+                  <h4>{{ project.project_name }}</h4>
+                  <h5><span><img src="{{ user_profile.client_pic }}" alt="client-picture" /></span>{{ user.get_full_name }}</h5>
+                  <p>Category: {{ project.category }}</p>
+                  <p>{{ project.project_description }}</p>
+                </div>
+
+                <div class="ewr_search_proj_list w-100">
+                  <div class="ewr_search_proj_info list-column">
+                    <ul>
+                      <li>
+                        <div class="info-item">
+                          <i class="fa fa-map-marker"></i>
+                          <span>Country</span>
+                        </div>
+                        <div class="info-value">{{ user_profile.country }}</div>
+                      </li>
+
+                      <li class="date">
+                        <div class="info-item">
+                          <i class="fas fa-calendar"></i>
+                          <span>Posted on:</span>
+                        </div>
+                        <div class="info-value">{{ project.posted_on }}</div>
+                      </li>
+
+                      <li class="budget">
+                        <div class="info-item">
+                          <i class="fa fa-money"></i>
+                          <span>Budget</span>
+                        </div>
+                        <div class="info-value">${{ project.min_bid_price }}-{{ project.max_bid_price }}</div>
+                      </li>
+                    </ul>
+                  </div>
+                  <a href="project-details.html" class="ewr_btn_yellow"><span>Bid Now</span></a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="blog-main-wrapper float_left">
+          <!-- Pagination links -->
+          <div class="custom-pegination">
+            <ul>
+              {% if projects.has_previous %}
+                <li class="previous">
+                  <a href="?page=1">&laquo; First</a>
+                </li>
+                <li class="previous">
+                  <a href="?page={{ projects.previous_page_number }}">&lsaquo; Previous</a>
+                </li>
+              {% endif %} {% for num in projects.paginator.page_range %}
+                {% if projects.number == num %}
+                  <li class="active">
+                    <a href="?page={{ num }}"><span>{{ num }}</span></a>
+                  </li>
+                {% else %}
+                  <li>
+                    <a href="?page={{ num }}"><span>{{ num }}</span></a>
+                  </li>
+                {% endif %}
+              {% endfor %} {% if projects.has_next %}
+                <li class="next">
+                  <a href="?page={{ projects.next_page_number }}">Next &rsaquo;</a>
+                </li>
+                <li class="next">
+                  <a href="?page={{ projects.paginator.num_pages }}">Last &raquo;</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- inner page end -->
+
+    <!-- footer inheritance -->
+    {% include 'common/footer.html' %}
+    <!-- footer end -->
+
+    <!-- javaScripts -->
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/contact_form.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+  </body>
 </html>

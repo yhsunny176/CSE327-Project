@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\ashad\OneDrive\Documents\GitHub\justajob\venv
+set VIRTUAL_ENV=E:\CSE327-Project-JustAJob.com\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
