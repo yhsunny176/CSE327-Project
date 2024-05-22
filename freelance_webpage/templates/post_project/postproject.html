@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Post Project</title>
+
     <!-- css links -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}" />
@@ -13,19 +13,19 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
-
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
     <!--favicon-->
-    <link rel="shortcut icon" type="image/png" href="{% static 'freelance_webpage/Images/fav-icon.svg' %}" />
-</head>
 
-<body class="page-bg">
+    <link rel="shortcut icon" type="image/png" href="{% static 'freelance_webpage/Images/fav-icon.svg' %}" />
+  </head>
+  <body class="page-bg">
     <div id="preloader">
-        <div id="status">
-            <img src="{% static 'freelance_webpage/Images/preloader.svg' %}" id="preloader_image" alt="loader">
-        </div>
+      <div id="status">
+        <img src="{% static 'freelance_webpage/Images/preloader.svg' %}" id="preloader_image" alt="loader">
+      </div>
     </div>
+
     <!-- return to top -->
     <a href="javascript:void(0);" id="return-to-top" class="change-bg2"> <i class="fas fa-angle-double-up"></i></a>
 
@@ -34,83 +34,87 @@
     <!-- navbar end -->
 
     <!-- inner page start -->
-
     <div class="inner-page-main-wrapper float_left">
-        <div class="container">
-            <div class="home1-section-heading1">
-                <h6>Post Project</h6>
-                <h4>Tell Us What You Need Done</h4>
-            </div>
-            <div class="post-project-main-wrapper float_left">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="post-form-wrapper float_left">
-                            <form method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <h4>Choose a name for your project</h4>
-                                <div class="form-group row">
-                                    <div class="col-md-12 col-12">
-                                        <label>Project Name</label>
-                                        <input type="text" name="name" placeholder="Enter here project title..." required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12 col-12">
-                                        <label>Project Category</label>
-                                        <div class="select-field">
-                                            <select name="category">
-                                                <option value="development_and_coding">Design & Development</option>
-                                                <option value="design_and_creative" selected>Design & Creative</option>
-                                                <option value="digital_marketing">Digital Marketing</option>
-                                                <option value="writing_and_translation">Writing & Translation</option>
-                                                <option value="video_and_music">Video & Music</option>
-                                                <option value="3d_design">3D Design</option>
-                                                <option value="business">Business</option>
-                                                <option value="ai">AI</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h4>Tell us more about your project</h4>
-                                <div class="form-group row">
-                                    <div class="col-md-12 col-12">
-                                        <label>Start With A Bit About Your Project.</label>
-                                        <textarea rows="4" cols="50" name="description"
-                                            placeholder="Describe your project here..."></textarea required>
-                                    </div>
-                                </div>
-                                <h4>Enter your budget of project</h4>
-                                <div class="form-group budget_input_wrap">
-                                    <div class="budget_input">
-                                        <label>Min. price for Bid</label>
-                                        <input name="min_price" class="require" placeholder="$ 8.00" type="text" required>
-                                    </div>
-                                    <div class="budget_input">
-                                        <label>Max. price for Bid</label>
-                                        <input name="max_price" class="require" placeholder="$ 40.00 " type="text" required>
-                                    </div>
-                                </div>
-                                <h4>Attached File</h4>
-                                <div class="form-group row">
-                                    <div class="col-md-12 col-12">
-                                        <label>Upload any images or document that might be helpful in explaning your
-                                            project brief here.</label>
-                                        <input name="attached_file" class="file-doc" type="file" required>
-                                    </div>
-                                </div>
-                                <button class="custom-btn" type="submit"><span>Post Project</span></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="home1-section-heading1">
+          <h6>Post Project</h6>
+          <h4>Tell Us What You Need Done</h4>
         </div>
+        <div class="post-project-main-wrapper float_left">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="post-form-wrapper float_left">
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <h4>Choose a name for your project</h4>
+                  <div class="form-group row">
+                    <div class="col-md-12 col-12">
+                      <label>Project Name</label>
+                      <input type="text" name="name" placeholder="Enter here project title..." required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-md-12 col-12">
+                      <label>Project Category</label>
+                      <div class="select-field">
+                        <select name="category">
+                          <option value="development_and_coding">Design & Development</option>
+                          <option value="design_and_creative" selected>Design & Creative</option>
+                          <option value="digital_marketing">Digital Marketing</option>
+                          <option value="writing_and_translation">Writing & Translation</option>
+                          <option value="video_and_music">Video & Music</option>
+                          <option value="3d_design">3D Design</option>
+                          <option value="business">Business</option>
+                          <option value="ai">AI</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h4>Tell us more about your project</h4>
+                  <div class="form-group row">
+                    <div class="col-md-12 col-12">
+                      <label>Start With A Bit About Your Project.</label>
+                      <textarea rows="4" cols="50" name="description"
+                      placeholder="Describe your project here..."></textarea required>
+                    </div>
+                  </div>
+
+                  <h4>Enter your budget of project</h4>
+                  <div class="form-group budget_input_wrap">
+                    <div class="budget_input">
+                      <label>Min. price for Bid</label>
+                      <input name="min_price" class="require" placeholder="$ 8.00" type="text" required>
+                    </div>
+                    <div class="budget_input">
+                      <label>Max. price for Bid</label>
+                      <input name="max_price" class="require" placeholder="$ 40.00 " type="text" required>
+                    </div>
+                  </div>
+
+                  <h4>Attached File</h4>
+                  <div class="form-group row">
+                    <div class="col-md-12 col-12">
+                      <label>Upload any images or document that might be helpful in explaning your
+                        project brief here.</label>
+                        <input name="attached_file" class="file-doc" type="file" required>
+                    </div>
+                  </div>
+
+                  <button class="custom-btn" type="submit"><span>Post Project</span></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- inner page end-->
 
     <!-- footer inheritance -->
     {% include 'common/footer.html' %}
-
+    
     <!-- javaScripts -->
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -119,8 +123,5 @@
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/contact_form.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
-
-
 </body>
-
 </html>
