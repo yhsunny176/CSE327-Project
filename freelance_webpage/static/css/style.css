@@ -298,165 +298,6 @@ button.button-btn span {
 
 /* Preloader css End */
 
-/* Other CSS */
-iframe {
-  width: 100%;
-}
-
-.wrapper {
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.wrapper .waves {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: rgba(214, 214, 214, 0.78);
-  opacity: 0;
-  border-radius: 100%;
-  right: -30px;
-  bottom: -65px;
-  z-index: -1;
-  animation: waves 3s ease-in-out infinite;
-}
-
-.wrapper .wave-1 {
-  animation-delay: 0s;
-}
-
-.wrapper .wave-2 {
-  animation-delay: 1s;
-}
-
-.wrapper .wave-3 {
-  animation-delay: 2s;
-}
-
-@keyframes waves {
-  0% {
-    transform: scale(0.2, 0.2);
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.9;
-  }
-
-  100% {
-    transform: scale(0.9, 0.9);
-    opacity: 0;
-  }
-}
-
-.animate-top-y {
-  animation-name: top-y;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes top-y {
-  0% {
-    transform: translateY(-20px);
-    -webkit-transform: translateY(-20px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-    -webkit-transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(-20px);
-    -webkit-transform: translateY(-20px);
-  }
-}
-
-@keyframes rotate {
-
-  20%,
-  80% {
-    transform: rotateY(180deg);
-  }
-
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-
-.overlay {
-  height: 100%;
-  width: 100%;
-  display: none;
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-.overlay-content {
-  position: relative;
-  top: 46%;
-  width: 80%;
-  text-align: center;
-  margin-top: 30px;
-  margin: auto;
-}
-
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-  cursor: pointer;
-  color: white;
-}
-
-.overlay .closebtn:hover {
-  color: #ccc;
-}
-
-.overlay input[type=text] {
-  padding: 15px;
-  font-size: 17px;
-  border: none;
-  float: left;
-  width: 80%;
-  background: #fff;
-}
-
-.overlay input[type=text]:hover {
-  background: #f1f1f1;
-}
-
-.overlay button {
-  float: left;
-  width: 20%;
-  padding: 15px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.overlay button:hover {
-  background: #bbb;
-}
-
-.form-control:focus {
-  box-shadow: none;
-  background-color: none;
-  border: none;
-}
-
-/* Other CSS */
-
 /**
  * 2.2 Header
  *
@@ -892,49 +733,6 @@ iframe {
   margin-left: 10px;
 }
 
-.inner-page-main-wrapper .custom-pegination ul .preious a {
-  display: inline-block;
-  border: 1px solid #0060aa;
-  color: #0060aa;
-  background-color: transparent;
-  border-radius: 30px;
-  width: 120px;
-  height: 40px;
-  line-height: 36px;
-  overflow: hidden;
-  position: relative;
-}
-
-.inner-page-main-wrapper .custom-pegination ul .preious a:after {
-  content: "";
-  width: 0;
-  height: 100%;
-  position: absolute;
-  left: -38%;
-  top: 0;
-  transform: skew(50deg);
-  transition-duration: 0.6s;
-  transform-origin: top left;
-  background: #0060aa;
-  transition: all 0.3s;
-}
-
-.inner-page-main-wrapper .custom-pegination ul .preious a:hover {
-  border: 1px solid #0060aa;
-}
-
-.inner-page-main-wrapper .custom-pegination ul .preious a:hover span {
-  z-index: 11;
-  position: relative;
-  color: #fff;
-}
-
-.inner-page-main-wrapper .custom-pegination ul .preious a:hover:after {
-  height: 100%;
-  width: 135%;
-  transition: all 0.3s;
-}
-
 .inner-page-main-wrapper .custom-pegination ul .active a {
   background-color: #0060aa;
   color: #fff;
@@ -1004,7 +802,14 @@ iframe {
   color: #108791;
 }
 
-.inner-page-main-wrapper .ewr_search_infobox .ewr_search_proj p {
+.inner-page-main-wrapper .ewr_search_infobox .ewr_search_proj .proj-desc p{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 4.5em;
+  margin-top: 15px;
   margin-bottom: 20px;
 }
 
@@ -1139,16 +944,19 @@ iframe {
   background-color: #fff;
   margin-bottom: 30px;
 }
+
 .inner-page-main-wrapper .profile-sidebar .title-sidebar {
   font-size: 20px;
   padding: 30px;
   border-bottom: 1px solid #eeeeee;
 }
+
 .inner-page-main-wrapper .profile-sidebar .top-details {
   text-align: center;
   border-bottom: 1px solid #eeeeee;
   padding: 30px;
 }
+
 .inner-page-main-wrapper .profile-sidebar .top-details img {
   display: inline-block;
   width: 100px;
@@ -1159,14 +967,17 @@ iframe {
   border: 4px solid;
   border-color: #00cc8d;
 }
+
 .inner-page-main-wrapper .profile-sidebar .top-details p {
   color: #111;
   font-weight: 600;
   font-size: 20px;
 }
+
 .inner-page-main-wrapper .profile-sidebar .top-details small {
   color: #797979;
 }
+
 .inner-page-main-wrapper .profile-sidebar .top-details small span {
   color: #00cc8d;
   display: inline-block;
@@ -1192,6 +1003,7 @@ iframe {
   position: relative;
   overflow: hidden;
 }
+
 .inner-page-main-wrapper .profile-sidebar .bottom-details .custom-btn:after {
   content: "";
   width: 0;
@@ -1205,32 +1017,39 @@ iframe {
   background: #fff;
   transition: all 0.3s;
 }
+
 .inner-page-main-wrapper .profile-sidebar .bottom-details .custom-btn:hover {
   border: 1px solid #00cc8d;
 }
+
 .inner-page-main-wrapper .profile-sidebar .bottom-details .custom-btn:hover span {
   z-index: 11;
   position: relative;
   color: #00cc8d;
 }
+
 .inner-page-main-wrapper .profile-sidebar .bottom-details .custom-btn:hover:after {
   height: 100%;
   width: 135%;
   transition: all 0.3s;
 }
+
 .inner-page-main-wrapper .profile-sidebar .cdi-box {
   padding: 0px 30px;
 }
+
 .inner-page-main-wrapper .profile-sidebar .cdi-box .icon-client {
   width: 50px;
   float: left;
 }
+
 .inner-page-main-wrapper .profile-sidebar .cdi-box .icon-client span {
   color: #0060aa;
   display: inline-block;
   font-size: 20px;
   padding-top: 4px;
 }
+
 .inner-page-main-wrapper .profile-sidebar .cdi-box .icon-client-text {
   width: calc(100% - 50px);
   float: left;
@@ -1431,9 +1250,3 @@ iframe {
 .custom-check::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-.main-header-wrapper1 .menu-fixed .social-media-icons .login-btn .user-text a {
-  color: #111;
-}
-
-/*# sourceMappingURL=style.css.map */
