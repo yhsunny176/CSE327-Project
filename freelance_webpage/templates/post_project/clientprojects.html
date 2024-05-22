@@ -40,14 +40,16 @@
           <h4>Project Listing 3 column</h4>
         </div>
         <div class="row">
-          {% for project in project_details %}
+          {% for project in page_obj %}
             <div class="ewr-cards col-lg-4 col-md-4 col-sm-12 col-12">
               <div class="ewr_search_infobox">
                 <div class="ewr_search_proj w-100">
                   <h4>{{ project.project_name }}</h4>
                   <h5><span><img src="{{ user_profile.client_pic }}" alt="client-picture" /></span>{{ user.get_full_name }}</h5>
                   <p>Category: {{ project.category }}</p>
-                  <p>{{ project.project_description }}</p>
+                  <div class="proj-desc">
+                    <p>{{ project.project_description }}</p>
+                  </div>
                 </div>
 
                 <div class="ewr_search_proj_list w-100">
@@ -88,29 +90,35 @@
           <!-- Pagination links -->
           <div class="custom-pegination">
             <ul>
-              {% if projects.has_previous %}
-                <li class="previous">
-                  <a href="?page=1">&laquo; First</a>
+              {% if page_obj.has_previous %}
+                <li class="previous" aria-label="Previous">
+                  <a href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&laquo;</span></a>
                 </li>
-                <li class="previous">
-                  <a href="?page={{ projects.previous_page_number }}">&lsaquo; Previous</a>
+              {% else %}
+                <li class="previous disabled" aria-label="Previous">
+                  <a href="#"><span aria-hidden="true">&laquo;</span></a>
                 </li>
-              {% endif %} {% for num in projects.paginator.page_range %}
-                {% if projects.number == num %}
+              {% endif %}
+
+              {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
                   <li class="active">
-                    <a href="?page={{ num }}"><span>{{ num }}</span></a>
+                    <a href="#"><span>{{ num }}</span></a>
                   </li>
-                {% else %}
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                   <li>
-                    <a href="?page={{ num }}"><span>{{ num }}</span></a>
+                    <a class="active" href="?page={{ num }}"><span>{{ num }}</span></a>
                   </li>
                 {% endif %}
-              {% endfor %} {% if projects.has_next %}
+              {% endfor %}
+
+              {% if page_obj.has_next %}
                 <li class="next">
-                  <a href="?page={{ projects.next_page_number }}">Next &rsaquo;</a>
+                  <a href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
                 </li>
-                <li class="next">
-                  <a href="?page={{ projects.paginator.num_pages }}">Last &raquo;</a>
+              {% else %}
+                <li class="next disabled">
+                  <a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
                 </li>
               {% endif %}
             </ul>
