@@ -9,13 +9,21 @@ def profile_complete_required(view_func):
     If the user's profile is incomplete (missing country, street address, or phone number), 
     a warning message is displayed, and the user is redirected to the profile update page.
 
-    Args:
-        view_func (callable): The view function to be decorated.
-
-    Returns:
-        callable: The decorated view function.
+    :param view_func: The view function to be decorated.
+    :type view_func: callable
+    :return: The decorated view function.
+    :rtype: callable
     """
     def _wrapped_view(request, *args, **kwargs):
+        """Checks if the user's profile is complete and redirects if necessary.
+
+        :param request: The HTTP request object.
+        :type request: django.http.HttpRequest
+        :param args: Additional positional arguments for the view function.
+        :param kwargs: Additional keyword arguments for the view function.
+        :return: The response from the view function or a redirect to the profile update page.
+        :rtype: django.http.HttpResponse
+        """
         user_profile = UserProfile.objects.get(user=request.user)
         if not user_profile.country or not user_profile.street_address or not user_profile.phone_number:
             messages.warning(request, "Please complete your profile to continue.")

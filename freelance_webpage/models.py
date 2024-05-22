@@ -32,4 +32,9 @@ class UserProfile(models.Model):
     client_pic = models.ImageField(upload_to='client_pics/', null=True, blank=True)
 
     def __str__(self):
+        """Returns the username of the associated user.
+
+        :return: The username of the user.
+        :rtype: str
+        """
         return self.user.username

@@ -11,13 +11,10 @@ def post_project(request):
     containing project details, validates the form data, creates a new project object, and saves
     it to the database. If the request method is GET, it renders the project posting form.
 
-    Args:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponse: If the request method is POST and the form data is valid, redirects
-                      the user to the client projects page. If the request method is GET,
-                      renders the project posting form.
+    :param request: The HTTP request object.
+    :type request: HttpRequest
+    :return: If the request method is POST and the form data is valid, redirects the user to the client projects page. If the request method is GET, renders the project posting form.
+    :rtype: HttpResponse
     """
     if request.method == 'POST':
         pname = request.POST['name']
