@@ -10,18 +10,59 @@ from .models import UserProfile
 
 
 def index(request):
+    """Renders the index page.
+
+    This view function renders the index page of the website.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object containing the rendered index page.
+    """
     return render(request, "index.html")
 
 
 def freelancer_dashboard(request):
+    """Renders the freelancer dashboard page.
+
+    This view function renders the dashboard page for freelancers.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object containing the rendered freelancer dashboard page.
+    """
     return render(request, "dashboards/freelancer-dboard.html")
 
 
 def employer_dashboard(request):
+    """Render the employer dashboard page.
+
+    This view function renders the dashboard page for employers.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object containing the rendered employer dashboard page.
+    """
     return render(request, "dashboards/employer-dboard.html")
 
 
 def register(request):
+    """Handle user registration.
+
+    This view function handles user registration. It validates the submitted form data,
+    creates a new user account, logs in the user, and redirects them to the appropriate dashboard.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object containing the rendered registration page or a redirect to the dashboard.
+    """
     if request.method == "POST":
         fname = request.POST['fname']
         lname = request.POST['lname']
@@ -68,6 +109,18 @@ def register(request):
 
 
 def login(request):
+    """Handle user login.
+
+    This view function handles user login. It validates the submitted credentials,
+    authenticates the user, logs in the user, and redirects them to the appropriate dashboard.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object containing the rendered login page
+                      or a redirect to the dashboard.
+    """
     if request.user.is_authenticated:
         user_profile = UserProfile.objects.get(user=request.user)
         messages.info(request, "You are already logged in.")
@@ -103,5 +156,16 @@ def login(request):
 
 @login_required
 def logout(request):
+    """Handle user logout.
+
+    This view function handles user logout. It logs out the currently authenticated user and
+    redirects them to the index page.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponseRedirect: Redirects to the index page after successfully logging out.
+    """
     auth_logout(request)
     return redirect('index')

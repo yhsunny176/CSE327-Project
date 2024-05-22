@@ -1,12 +1,24 @@
 from django.db import models
-
-# Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
 
-
-# Create your models here.
 class UserProfile(models.Model):
+    """Model representing user profiles.
+
+    This model stores additional information about users, such as their role, country, phone number,
+    street address, and profile picture.
+
+    Attributes:
+        user (OneToOneField): The associated user instance.
+        role (CharField): The role of the user, either 'freelancer' or 'employer'.
+        country (CharField): The country of the user.
+        phone_number (CharField): The phone number of the user.
+        street_address (CharField): The street address of the user.
+        client_pic (ImageField): The profile picture of the user.
+
+    Methods:
+        __str__: Returns the username of the associated user.
+    """
     USER_ROLES = (
         ('freelancer', 'Freelancer'),
         ('employer', 'Employer'),
