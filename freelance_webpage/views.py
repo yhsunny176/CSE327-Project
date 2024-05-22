@@ -7,18 +7,15 @@ from django.urls import reverse
 from .models import UserProfile
 
 # Create your views here.
-
-
 def index(request):
     """Renders the index page.
 
     This view function renders the index page of the website.
 
-    Args:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponse: The HTTP response object containing the rendered index page.
+    :param request: The HTTP request object.
+    :type request: HttpRequest
+    :return: The HTTP response object containing the rendered index page.
+    :rtype: HttpResponse
     """
     return render(request, "index.html")
 
@@ -28,11 +25,10 @@ def freelancer_dashboard(request):
 
     This view function renders the dashboard page for freelancers.
 
-    Args:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponse: The HTTP response object containing the rendered freelancer dashboard page.
+    :param request: The HTTP request object.
+    :type request: HttpRequest
+    :return: The HTTP response object containing the rendered freelancer dashboard page.
+    :rtype: HttpResponse
     """
     return render(request, "dashboards/freelancer-dboard.html")
 
@@ -42,11 +38,10 @@ def employer_dashboard(request):
 
     This view function renders the dashboard page for employers.
 
-    Args:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponse: The HTTP response object containing the rendered employer dashboard page.
+    :param request: The HTTP request object.
+    :type request: HttpRequest
+    :return: The HTTP response object containing the rendered employer dashboard page.
+    :rtype: HttpResponse
     """
     return render(request, "dashboards/employer-dboard.html")
 
@@ -57,11 +52,10 @@ def register(request):
     This view function handles user registration. It validates the submitted form data,
     creates a new user account, logs in the user, and redirects them to the appropriate dashboard.
 
-    Args:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponse: The HTTP response object containing the rendered registration page or a redirect to the dashboard.
+    :param request: The HTTP request object.
+    :type request: HttpRequest
+    :return: The HTTP response object containing the rendered registration page or a redirect to the dashboard.
+    :rtype: HttpResponse
     """
     if request.method == "POST":
         fname = request.POST['fname']
@@ -114,12 +108,10 @@ def login(request):
     This view function handles user login. It validates the submitted credentials,
     authenticates the user, logs in the user, and redirects them to the appropriate dashboard.
 
-    Args:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponse: The HTTP response object containing the rendered login page
-                      or a redirect to the dashboard.
+    :param request: The HTTP request object.
+    :type request: HttpRequest
+    :return: The HTTP response object containing the rendered login page or a redirect to the dashboard.
+    :rtype: HttpResponse
     """
     if request.user.is_authenticated:
         user_profile = UserProfile.objects.get(user=request.user)
@@ -161,11 +153,13 @@ def logout(request):
     This view function handles user logout. It logs out the currently authenticated user and
     redirects them to the index page.
 
-    Args:
-        request (HttpRequest): The HTTP request object.
-
-    Returns:
-        HttpResponseRedirect: Redirects to the index page after successfully logging out.
+    :param request: The HTTP request object.
+    :type request: HttpRequest
+    :return: Redirects to the index page after successfully logging out.
+    :rtype: HttpResponseRedirect
+    
+    :permission: This view requires the user to be logged in. If the user is not authenticated, they will be redirected
+                 to the index page
     """
     auth_logout(request)
-    return redirect('index')
+    return redirect('login')

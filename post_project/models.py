@@ -33,5 +33,8 @@ class Project(models.Model):
 
     def __str__(self):
         """Return the username of the user who posted the project.
+
+        :return: The username of the user.
+        :rtype: str
         """
         return self.user.username

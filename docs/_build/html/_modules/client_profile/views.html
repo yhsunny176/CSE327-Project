@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>client_profile.views &mdash; JustAJob.com - A maketplace for freelancers and employers 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            JustAJob.com - A maketplace for freelancers and employers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../freelance_webpage.html">freelance_webpage package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../post_project.html">post_project package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../clientprojects.html">clientprojects package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../client_profile.html">client_profile package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">JustAJob.com - A maketplace for freelancers and employers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">client_profile.views</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for client_profile.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">freelance_webpage.models</span> <span class="kn">import</span> <span class="n">UserProfile</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+
+<div class="viewcode-block" id="client_profile">
+<a class="viewcode-back" href="../../client_profile.html#client_profile.views.client_profile">[docs]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">client_profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Displays the client profile information.</span>
+
+<span class="sd">    This view function renders the client profile page, which contains information</span>
+<span class="sd">    about the authenticated user&#39;s profile.</span>
+
+<span class="sd">    :param request: The HTTP request object.</span>
+<span class="sd">    :type request: HttpRequest</span>
+<span class="sd">    :return: The HTTP response object containing the rendered client profile page.</span>
+<span class="sd">    :rtype: HttpResponse</span>
+
+<span class="sd">    :permissions: This view requires the user to be logged in. If the user is not authenticated, </span>
+<span class="sd">                  they will be redirected to the login page.</span>
+
+<span class="sd">    :context: No additional context data is passed to the template rendering process.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;client_profile_info/client-profile.html&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="profile_view">
+<a class="viewcode-back" href="../../client_profile.html#client_profile.views.profile_view">[docs]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">profile_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Displays the user profile information.</span>
+
+<span class="sd">    This view function retrieves and displays the profile information for the authenticated user.</span>
+<span class="sd">    If the user is not authenticated, an error message is displayed, and the user is redirected to the login page.</span>
+
+<span class="sd">    :param request: The HTTP request object.</span>
+<span class="sd">    :type request: HttpRequest</span>
+<span class="sd">    :return: The HTTP response object containing the rendered user profile page.</span>
+<span class="sd">    :rtype: HttpResponse</span>
+
+<span class="sd">    :permissions: This view requires the user to be logged in. If the user is not authenticated, </span>
+<span class="sd">                  they will be redirected to the login page.</span>
+<span class="sd">                  </span>
+<span class="sd">    :context:</span>
+<span class="sd">        - user_profile (UserProfile): The profile information for the authenticated user.</span>
+<span class="sd">        - user_details (dict): A dictionary containing basic details of the authenticated user,</span>
+<span class="sd">                               including first name, last name, date joined, and email.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+        <span class="n">user_profile</span> <span class="o">=</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+
+        <span class="c1"># Access user details from the User model</span>
+        <span class="n">user_details</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span>
+            <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">last_name</span><span class="p">,</span>
+            <span class="s1">&#39;date_joined&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">date_joined</span><span class="p">,</span>
+            <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Pass data to template context</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;user_profile&#39;</span><span class="p">:</span> <span class="n">user_profile</span><span class="p">,</span>
+            <span class="s1">&#39;user_details&#39;</span><span class="p">:</span> <span class="n">user_details</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;client_profile_info/client-profile.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Handle the case when the user is not authenticated</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Invalid credentials&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="update_profile">
+<a class="viewcode-back" href="../../client_profile.html#client_profile.views.update_profile">[docs]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">update_profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update the user profile information.</span>
+
+<span class="sd">    This view function allows authenticated users to update their profile information,</span>
+<span class="sd">    including email address, country, street address, phone number, and profile picture.</span>
+
+<span class="sd">    :param request: The HTTP request object.</span>
+<span class="sd">    :type request: HttpRequest</span>
+<span class="sd">    :return: Redirects to the client profile page after successfully updating the profile, or </span>
+<span class="sd">             renders the profile update form if the request method is GET.</span>
+<span class="sd">    :rtype: HttpResponse or HttpResponseRedirect</span>
+
+<span class="sd">    :permissions: This view requires the user to be logged in. If the user is not authenticated, </span>
+<span class="sd">                  they will be redirected to the login page.</span>
+
+<span class="sd">    :POST Parameters:</span>
+<span class="sd">        - email (str): The updated email address for the user.</span>
+<span class="sd">        - country (str): The updated country for the user.</span>
+<span class="sd">        - street_address (str): The updated street address for the user.</span>
+<span class="sd">        - phone_number (str): The updated phone number for the user.</span>
+<span class="sd">        - client_pic_upload (file): The updated profile picture file uploaded by the user.</span>
+<span class="sd">        </span>
+<span class="sd">    :context:</span>
+<span class="sd">        - user_profile (UserProfile): The profile information for the authenticated user.</span>
+<span class="sd">        - user_details (dict): A dictionary containing the first name, last name, email, and username of the authenticated user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user_profile</span> <span class="o">=</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="c1"># Get the updated information from the form</span>
+        <span class="n">email_address</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+        <span class="n">country</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">)</span>
+        <span class="n">street_address</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;street_address&#39;</span><span class="p">)</span>
+        <span class="n">phone</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;phone_number&#39;</span><span class="p">)</span>
+        <span class="n">client_pic_upload</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;client_pic_upload&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Update the user profile information in the database</span>
+        <span class="k">if</span> <span class="n">email_address</span><span class="p">:</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email_address</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">email_address</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;email_updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">client_pic_upload</span><span class="p">:</span>
+            <span class="n">user_profile</span><span class="o">.</span><span class="n">client_pic</span> <span class="o">=</span> <span class="n">client_pic_upload</span>
+
+        <span class="k">if</span> <span class="n">country</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">user_profile</span><span class="o">.</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span>
+
+        <span class="k">if</span> <span class="n">street_address</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">user_profile</span><span class="o">.</span><span class="n">street_address</span> <span class="o">=</span> <span class="n">street_address</span>
+
+        <span class="k">if</span> <span class="n">phone</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">user_profile</span><span class="o">.</span><span class="n">phone_number</span> <span class="o">=</span> <span class="n">phone</span>
+
+        <span class="n">user_profile</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="c1"># Redirect to the profile view page after updating the information</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;client_profile&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Sorry, you are not logged in&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yeasinul Haque Sani, Md Abdul Kader, Nowshin Jahan, Tanha Ahmed Nijhum.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

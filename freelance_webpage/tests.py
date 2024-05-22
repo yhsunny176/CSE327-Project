@@ -13,8 +13,8 @@ class TemplateTestCase(TestCase):
         This method tests whether the index template is being used
         when accessing the index page.
 
-        Returns:
-            None
+        :return: None
+        :rtype: NoneType
         """
         response = self.client.get(reverse('index'))
         self.assertTemplateUsed(response, 'index.html')
@@ -25,8 +25,8 @@ class TemplateTestCase(TestCase):
         This method tests whether the register template is being used
         when accessing the register page.
 
-        Returns:
-            None
+        :return: None
+        :rtype: NoneType
         """
         response = self.client.get(reverse('register'))
         self.assertTemplateUsed(response, 'register.html')
@@ -37,8 +37,8 @@ class TemplateTestCase(TestCase):
         This method tests whether the login template is being used
         when accessing the login page.
 
-        Returns:
-            None
+        :return: None
+        :rtype: NoneType
         """
         response = self.client.get(reverse('login'))
         self.assertTemplateUsed(response, 'login.html')
