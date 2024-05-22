@@ -1,67 +1,78 @@
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            {% load static %}
-            <title>JustaJob Login</title>
-            <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/login.css' %}">    
-        </head>
-        <body>
-            <div class="container">
-                <!-- Left side: image occupying half the page -->
-                <div class="login-image">
-                    <img src="{% static 'freelance_webpage/Images/login.png' %}" alt="Login Image">
-                </div>
-                <!-- Right side: login form occupying half the page -->
-                <div class="login-form">
-                    <!-- Messages -->
-                    {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                            <li class="message {{ message.tags }}">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    <!-- Logo image -->
-                    <a href="index">
-                        <img src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="JustaJob Logo" width="350">
-                    </a>
-                    <!-- Form title -->
-                    <h1>Login</h1>
-                    <!-- Form description -->
-                    <p>Login to access your JustaJob account</p>
-                    <!-- Login form -->
-                    <form action="{% url 'login' %}" method="post">
-                        {% csrf_token %}
-                        <!-- Email input -->
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                        
-                        <!-- Password input -->
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required>
-                        
-                        <!-- Remember Me checkbox -->
-                        <div class="remember-me">
-                            <input type="checkbox" id="rememberMe" name="rememberMe">
-                            <label for="rememberMe">Remember Me</label>
-                        </div>
-                        <!-- Submit button -->
-                        <button type="submit">Login</button>
-                    </form>
-                    <!-- Sign up link -->
-                    <div class="sign-up">
-                        Don't have an account? <a href="{% url 'register' %}">Sign Up</a>
-                    </div>
-                    <!-- OR separator -->
-                    <div class="or">Or sign in with</div>
-                    <!-- Google login button -->
-                    <div class="google-login">
-                        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
-                    </div>
-                </div>
-            </div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustaJob Login</title>
+    <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/login.css' %}">    
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- Left side: image occupying half the page -->
+      <div class="login-image">
+        <img src="{% static 'freelance_webpage/Images/login.png' %}" alt="Login Image">
+      </div>
+
+      <!-- Right side: login form occupying half the page -->
+      <div class="login-form">
+        <!-- Messages -->
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li class="message {{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- Logo image -->
+        <a href="index">
+          <img src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="JustaJob Logo" width="350">
+        </a>
         
-        </body>
-        </html>
+        <!-- Form title -->
+        <h1>Login</h1>
+
+        <!-- Form description -->
+        <p>Login to access your JustaJob account</p>
+
+        <!-- Login form -->
+        <form action="{% url 'login' %}" method="post">
+          {% csrf_token %}
+
+          <!-- Email input -->
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+
+          <!-- Password input -->
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+
+          <!-- Remember Me checkbox -->
+          <div class="remember-me">
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <label for="rememberMe">Remember Me</label>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit">Login</button>
+        </form>
+
+        <!-- Sign up link -->
+        <div class="sign-up">
+          Don't have an account? <a href="{% url 'register' %}">Sign Up</a>
+        </div>
+
+        <div class="or">Or sign in with</div>
+
+        <!-- Google login button -->
+        <div class="google-login">
+          <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
+        </div>
+      </div>
+      
+    </div>
+  </body>
+</html>

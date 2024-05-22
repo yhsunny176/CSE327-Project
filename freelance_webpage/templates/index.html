@@ -1,251 +1,255 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JustaJob</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/styles.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>JustaJob</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/styles.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
-<body>
+  <body>
     <header>
-        <div class="header-top">
-            <img src="{% static 'freelance_webpage/Images/logo.png' %}" alt="Company Logo" style="height: 30px;">
-            <nav>
-                <ul>
-                    
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    {% if user.userprofile.role == 'freelancer' %}
-                    <li class="nav-item menu-click5 ps-rel">
-                        <a class="nav-link" href="{% url 'freelancer_dashboard' %}">Dashboard</a>
-                    </li>
-                  {% else %}
-                    <li class="nav-item menu-click5 ps-rel">
-                        <a class="nav-link" href="{% url 'employer_dashboard' %}">Dashboard</a>
-                    </li>
+      <div class="header-top">
+        <img src="{% static 'freelance_webpage/Images/logo.png' %}" alt="Company Logo" style="height: 30px;">
+        <nav>
+          <ul>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#services">Services</a>
+            </li>
+            <li>
+              {% if user.userprofile.role == 'freelancer' %}
+              <li class="nav-item menu-click5 ps-rel">
+                <a class="nav-link" href="{% url 'freelancer_dashboard' %}">Dashboard</a>
+              </li>
+              {% else %}
+              <li class="nav-item menu-click5 ps-rel">
+                    <a class="nav-link" href="{% url 'employer_dashboard' %}">Dashboard</a>
+                  </li>
                   {% endif %}
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="login-container">
-                
-                {% if user.is_authenticated %}
-                    <p>Welcome, {{ user.first_name }}!</p>
-                    <form action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="submit" class="logout">Logout</button>
-                    </form>
-                {% else %}
-
-                    <form action="{% url 'login' %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="login">Sign in</button>
-                    </form>
-
-                    <form action="{% url 'register' %}">
-                        {% csrf_token %}
-                        <button type="submit" class="register">Join</button>
-                    </form>
-                {% endif %}
-            <!-- end statement here -->
-                <p id="welcomeMessage" style="color: white;"></p>
-            </div>
+            </li>
+            <li>   
+              <a href="#about">About Us</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="login-container">
+          {% if user.is_authenticated %}
+          <p>Welcome, {{ user.first_name }}!</p>
+          <form action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logout">Logout</button>
+          </form>
+          {% else %}
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="login">Sign in</button>
+          </form>
+          <form action="{% url 'register' %}">
+            {% csrf_token %}
+            <button type="submit" class="register">Join</button>
+          </form>
+          {% endif %}
+          <!-- end statement here -->
+          <p id="welcomeMessage" style="color: white;"></p>
         </div>
-        <div class="bottom-header">
-            <p>Tap into expert talent, no matter where you are get your tasks done remotely!</p>
-            <input type="text" placeholder="What are you looking for? " class="header-input"> 
-        </div>
+      </div>
+
+      <div class="bottom-header">
+        <p>Tap into expert talent, no matter where you are get your tasks done remotely!</p>
+        <form>
+          <div class="search">
+            <span class="search-icon"><i class="fas fa-search"></i></span>
+            <input type="search" class="search-input" placeholder="Search for projects, services etc.">
+          </div>
+        </form>
+      </div>
     </header>
     <main>
-        <!--Home Part-->
-        <section id="home">
-            <h2>Hire Experts Based on Category</h2>
-            <h4>Find experts from 10+ skills</h4>
-    </main> 
-<!--Services Part--> 
-<section id="services">
-    <div class="portion">
-        <div class="service-wrapper">
+      <!--Home Part-->
+      <section id="home">
+        <h2>Hire Experts Based on Category</h2>
+        <h4>Find experts from 10+ skills</h4>
+      </section>
+      <!--Services Part--> 
+      <section id="services">
+        <div class="portion">
+          <div class="service-wrapper">
             <div class= "service">
-                <h1>Services <span></span></h1>
-                <div class="cards">
-                    <div class="card">
-                        <i class="fa-brands fa-chromecast"></i>
-                        <h2>Business Stratagy </h2>
-                        <p>Freelancers' business strategy entails developing plans for long-term success, covering market positioning, target audience, 
-                            pricing, and marketing, delivered remotely through freelance platforms.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-layer-group"></i>
-                        <h2>Website Development </h2>
-                        <p>Website development for freelancing websites involves the creation, design, and implementation of websites tailored
-                         to clients' specifications and needs, including aspects such as layout, functionality, 
-                        and user experience, delivered remotely on a project basis through freelance platforms.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-user-group"></i>
-                        <h2>Digital Marketing </h2>
-                        <p>Digital marketing for freelancing websites encompasses the strategic promotion of products or services using online channels 
-                            such as social media, search engines, email, and content marketing, 
-                            tailored to clients' needs and delivered remotely on a project basis through freelance platforms.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-desktop"></i>
-                        <h2>Mobile Development </h2>
-                        <p>Mobile development for freelancing websites involves the creation of software applications specifically designed to 
-                            run on mobile devices such as smartphones and tablets, including both native and cross-platform development, 
-                            delivered remotely to clients through freelance platforms on a project basis.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-camera"></i>
-                        <h2>Graphic Design </h2>
-                        <p>Graphic design for freelancing websites involves the creation of visual content and assets, including logos,
-                         advertisements, web graphics, and branding materials, often tailored to clients' 
-                        specific needs and brand identities, and delivered remotely on a project basis through freelance platforms.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-pen-nib"></i>
-                        <h2>Design & Creative</h2>
-                        <p>"Design & Creative" encompasses a range of artistic and visual endeavors, including graphic design, 
-                            illustration, animation, photography,  and multimedia production, often delivered remotely by freelancers through online platforms.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-video"></i>
-                        <h2>Video & Music</h2>
-                        <p>"Video & Music" involves the creation and production of audiovisual content, including music composition, sound design, video editing, and animation,
-                             often delivered remotely by freelancers through online platforms.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                        <h2>other</h2>
-                        <p>"Other" refers to a diverse array of services not covered by specific categories, including niche specialties, unique offerings, and miscellaneous
-                         projects, often provided remotely by freelancers through online platforms.</p>
-                    </div>
+              <h1>Services <span></span></h1>
+              <div class="cards">
+                <div class="card">
+                  <i class="fa-brands fa-chromecast"></i>
+                  <h2>Business Strategy </h2>
+                  <p>Freelancers' business strategy entails developing plans for long-term success, covering market positioning, target audience...</p> 
                 </div>
+                <div class="card">
+                  <i class="fa-solid fa-layer-group"></i>
+                  <h2>Website Development </h2>
+                  <p>Website development for freelancing websites involves the creation, design, and implementation of websites tailored to clients' specifications and needs, including...</p>
+                </div>
+                <div class="card">
+                  <i class="fa-solid fa-user-group"></i>
+                    <h2>Digital Marketing </h2>
+                    <p>Digital marketing for freelancing websites encompasses the strategic promotion of products or services using online channels such as social media, search engines, email, and content marketing...</p>
+                </div>
+                <div class="card">
+                  <i class="fa-solid fa-desktop"></i>
+                  <h2>Mobile Development </h2>
+                  <p>Mobile development for freelancing websites involves the creation of software applications specifically designed to run on mobile devices such as smartphones and tablets...</p>
+                </div>
+                <div class="card">
+                  <i class="fa-solid fa-camera"></i>
+                  <h2>Graphic Design </h2>
+                  <p>Graphic design for freelancing websites involves the creation of visual content and assets, including logos, advertisements, web graphics...</p>
+                </div>
+                <div class="card">
+                  <i class="fa-solid fa-pen-nib"></i>
+                  <h2>Design & Creative</h2>
+                  <p>"Design & Creative" encompasses a range of artistic and visual endeavors, including graphic design, illustration, animation...</p>
+                </div>
+                <div class="card">
+                  <i class="fa-solid fa-video"></i>
+                  <h2>Video & Music</h2>
+                  <p>"Video & Music" involves the creation and production of audiovisual content, including music composition...</p>
+                </div>
+                <div class="card">
+                  <i class="fa fa-cog" aria-hidden="true"></i>
+                  <h2>other</h2>
+                  <p>"Other" refers to a diverse array of services not covered by specific categories, including niche specialties, unique offerings, and...</p>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
- </section>
-     <!--About Part-->
-     <section id="about">
+      </section>
+      <!--About Part-->
+      <section id="about">
         <div class="section">
-            <div class="containerp">
-                <div class="contenti-section">
-                   <div class="title">
-                   <h1>About Us</h1>
-                </div>
-                <div class="contentp">
-                    <h9>hbhjbgbhjjjjjjjjjjjjjjjjjjjjjjjjjjj</h9>
-                    <p>
-                        Welcome to our freelancing platform, where skilled professionals deliver top-notch, tailored services across various industries, ensuring quality, innovation, and customer satisfaction. Partner with us for reliable, creative solutions that exceed expectations and drive business success.</p>
-                        <div class="button">
-                            <a href =" "> Read More</a>
-                        </div>
-                    </div> 
-                    <div class="sociall">
-                        <a href=""><i class="fab fa-facebook-f"></i></a>
-                        <a href=""><i class="fab fa-twitter"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class= "image-section">
-                  
-                </div>
+          <div class="containerp">
+            <div class= "image-section">
+              <img src="{% static 'freelance_webpage/Images/ab1.png' %}" alt="bg-pic"> 
             </div>
+            <div class="contenti-section">
+              <div class="title">
+                <h1>About Us</h1>
+              </div>
+              <div class="contentp">
+                <h9>LOREM IPSUM DOLOR SIT AMET</h9>
+                <p>Welcome to our freelancing platform, where skilled professionals deliver top-notch, tailored services across various industries, ensuring quality, innovation, and customer satisfaction. Partner with us for reliable, creative solutions that exceed expectations and drive business success.</p>
+                <div class="button">
+                  <a href =" "> Read More</a>
+                </div>
+              </div> 
+              <div class="sociall">         
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>                     
+                <a href=""><i class="fab fa-instagram"></i></a>    
+              </div>   
+            </div>             
+          </div> 
         </div>
-            </section>
-<!--Contact Us Part-->
-            <section class="contact" = id="contact">
-                <div class="content">
-                    <h4>Contact Us</h4>
-                    <p>Get in touch for support or inquiries</P>
-                    </div>
-                    <div class="container">
-                        <div class="contactInfo">
-                            <div class="box">
-                                <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="text">
-                                    <h3>Address</h3>
-                                    <p>4671 Dhaka Camp Road,<br>Uttara,Rajlokkhi,<br>342</p>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i>
-                                </div>
-                                <div class="text">
-                                    <h3>Phone</h3>
-                                    <p>01645746589</p>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <div class="icon"><i class="fa-regular fa-envelope"></i>
-                                </div>
-                                <div class="text">
-                                    <h3>Email</h3>
-                                    <p>nowshin.jahan@northsouth.edu</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contactForm">
-                            <form>
-                               <h2>Send Message</h2>
-                               <div class="inputBox">
-                                <input type="text" name="" required="required">
-                                <span>Full Name</span>
-                               </div>
-                               <div class="inputBox">
-                                <input type="text" name="" required="required">
-                                <span>Email</span>
-                               </div>
-                               <div class="inputBox">
-                                <textarea required="required"></textarea>
-                                <span>Type Your Message...</span>
-                               </div>
-                               <div class="inputBox">
-                                <input type="submit" name="" value="Send">
-                               </div>
-                           </form>
-                        </div>
-                    </div>
-                </section>
-    <!--Footer part-->
-    <footer>
-    <div class="footerContainer">
-        <div class="socialicons">
-            <a href=""><i class="fa-brands fa-facebook"></i></a>
-            <a href=""><i class="fa-brands fa-instagram"></i></a>
-            <a href=""><i class="fa-brands fa-twitter"></i></a>
-            <a href=""><i class="fa-brands fa-google-plus"></i></a>
-            <a href=""><i class="fa-brands fa-youtube"></i></a>
-        </div>
-        <div class="footerNav">
-            <ul>
+      </section>
+      <!--Contact Us Part-->        
+      <section class="contact" = id="contact">          
+        <div class="content">                
+          <div class="container">                   
+            <div class="contactInfo">  
+              <div class="content-title">
+                <h4>Contact Us</h4>          
+                <p>Get in touch for support or inquiries</P> 
+              </div>             
+              <div class="box">              
+                <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i>               
+                </div>              
+                <div class="text">                    
+                  <h3>Address:</h3>                 
+                  <p>4671 Dhaka Camp Road, Uttara,Rajlokkhi, 342</p>               
+                </div>           
+              </div> 
+              <div class="box">                   
+                <div class="icon">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                </div>            
+                <div class="text">
+                  <h3>Phone:</h3>               
+                  <p>01645746589</p>            
+                </div>           
+              </div>
+              <div class="box">              
+                <div class="icon"><i class="fa-regular fa-envelope"></i>              
+                </div>               
+                <div class="text">                 
+                  <h3>Email:</h3>               
+                  <p>nowshin.jahan@northsouth.edu</p>            
+                </div>         
+              </div>       
+            </div>
+            <div class="contactForm">           
+              <form>              
+                <h2>Send Message</h2>             
+                <div class="inputBox">            
+                  <input type="text" name="" required="required">            
+                  <span>Full Name</span>            
+                </div>          
+                <div class="inputBox">            
+                  <input type="text" name="" required="required">        
+                  <span>Email</span>          
+                </div>            
+                <div class="inputBox">           
+                  <textarea required="required"></textarea>           
+                  <span>Type Your Message...</span>             
+                </div>             
+                <div class="inputBox">             
+                  <input type="submit" name="" value="Send">             
+                </div>         
+              </form>        
+            </div>      
+          </div>      
+        </section>
+        <!--Footer part-->
+        <footer>
+          <div class="footerContainer">
+            <div class="socialicons">
+              <a href=""><i class="fa-brands fa-facebook"></i></a>
+              <a href=""><i class="fa-brands fa-instagram"></i></a>
+              <a href=""><i class="fa-brands fa-twitter"></i></a>
+              <a href=""><i class="fa-brands fa-google-plus"></i></a>
+              <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footerNav">
+              <ul>  
                 <li><a href="">Home</a></li>
                 <li><a href="">services</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Contact Us</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footerBottom">
-        <p>CopyRight &copy;2024; Designed by <span class="designer">Team06</span></p>
-    </div>
-</footer>
-    <script>
-        function login() {
+              </ul>
+            </div>
+          </div>
+          <div class="footerBottom">
+            <p>CopyRight &copy;2024; Designed by <span class="designer">Team06</span></p>
+          </div>
+        </footer>
+        <script> 
+          function login() {
             // Placeholder for login functionality
             console.log("Login functionality placeholder");
-        }
-
-        function register() {
+          }
+          function register() {
             // Placeholder for register functionality
             console.log("Register functionality placeholder");
-        }
-    </script>
-</body>
+          }
+        </script>
+    </main>
+  </body>
 </html>
