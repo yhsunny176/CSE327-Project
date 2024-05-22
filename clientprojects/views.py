@@ -8,6 +8,30 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 @login_required
 def project_view(request):
+    """Displays the projects associated with the authenticated user.
+
+    This view function retrieves and displays the projects associated with the authenticated user's profile.
+    If the user is not authenticated, an error message is displayed, and the user is redirected to the login page.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object containing the rendered projects page.
+
+    Permissions:
+        This view requires the user to be logged in. If the user is not authenticated, they will be redirected
+        to the login page.
+        
+    Template:
+        'post_project/clientprojects.html'
+
+    Context:
+        - 'user_profile' (UserProfile): The profile information for the authenticated user.
+        - 'user_details' (dict): A dictionary containing the first name and last name of the authenticated user.
+        - 'project_details' (QuerySet): The projects associated with the authenticated user.
+        - 'page_obj' (Paginator.page): The current page of projects, used for pagination.
+    """
     if request.user.is_authenticated:
         user_profile = UserProfile.objects.get(user=request.user)
 
