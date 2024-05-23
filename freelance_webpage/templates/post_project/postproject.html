@@ -85,20 +85,22 @@
                   <div class="form-group budget_input_wrap">
                     <div class="budget_input">
                       <label>Min. price for Bid</label>
-                      <input name="min_price" class="require" placeholder="$ 8.00" type="text" required>
+                      <input name="min_price" class="require" placeholder="$ 8.00" input type="number" pattern="^[0-9]" title='Only Number' min="1" step="1">
                     </div>
                     <div class="budget_input">
                       <label>Max. price for Bid</label>
-                      <input name="max_price" class="require" placeholder="$ 40.00 " type="text" required>
+                      <input name="max_price" class="require" placeholder="$ 40.00 " input type="number" pattern="^[0-9]" title='Only Number' min="1" step="1">
                     </div>
                   </div>
 
                   <h4>Attached File</h4>
                   <div class="form-group row">
                     <div class="col-md-12 col-12">
-                      <label>Upload any images or document that might be helpful in explaning your
-                        project brief here.</label>
-                        <input name="attached_file" class="file-doc" type="file" required>
+                      <label>Upload any images or document that might be helpful in explaining your project brief here.</label>
+                      <input name="attached_file" class="file-doc" type="file">
+                      {% if errors.attached_file %}
+                        <span style="color:red;">{{ errors.attached_file }}</span>
+                      {% endif %}
                     </div>
                   </div>
 
