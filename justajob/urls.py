@@ -18,15 +18,20 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from freelance_webpage.views import logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('logout/', logout, name='logout'),
     path('', include('freelance_webpage.urls')),
     path('', include('post_project.urls')),
     path('', include('clientprojects.urls')),
     path('', include('client_profile.urls')),
+    path('', include('profiles.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.CLIENT_PICS_MEDIA_URL, document_root=settings.CLIENT_PICS_MEDIA_ROOT)
     urlpatterns += static(settings.DEFAULT_PICS_MEDIA_URL, document_root=settings.DEFAULT_PICS_MEDIA_ROOT)
+    urlpatterns += static(settings.FILE_DOC_MEDIA_URL, document_root=settings.FILE_DOC_MEDIA_ROOT)

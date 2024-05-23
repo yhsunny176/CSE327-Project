@@ -9,13 +9,8 @@ Subpackages
 
    post_project.migrations
 
-Module contents
----------------
-
-.. automodule:: post_project
-   :members:
-   :undoc-members:
-   :show-inheritance:
+Submodules
+----------
 
 post\_project.admin module
 --------------------------
@@ -61,6 +56,14 @@ post\_project.views module
 --------------------------
 
 .. automodule:: post_project.views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: post_project
    :members:
    :undoc-members:
    :show-inheritance:

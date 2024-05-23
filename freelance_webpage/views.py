@@ -19,7 +19,7 @@ def index(request):
     """
     return render(request, "index.html")
 
-
+@login_required
 def freelancer_dashboard(request):
     """Renders the freelancer dashboard page.
 
@@ -32,7 +32,7 @@ def freelancer_dashboard(request):
     """
     return render(request, "dashboards/freelancer-dboard.html")
 
-
+@login_required
 def employer_dashboard(request):
     """Render the employer dashboard page.
 
@@ -101,7 +101,7 @@ def register(request):
             return redirect('freelancer_dashboard')
         else:
             return redirect('employer_dashboard')
-
+    
     return render(request, "register.html")
 
 
@@ -143,7 +143,7 @@ def login(request):
                 return redirect('employer_dashboard')
         else:
             messages.error(request, "Invalid credentials")
-            return render(request, "login.html")
+            return render(request, "register.html")
 
     return render(request, "login.html")
 

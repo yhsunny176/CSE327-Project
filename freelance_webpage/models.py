@@ -24,7 +24,7 @@ class UserProfile(models.Model):
         ('employer', 'Employer'),
     )
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='freelance_profile')
     role = models.CharField(max_length=10, choices=USER_ROLES)
     country = models.CharField(max_length=100, null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)

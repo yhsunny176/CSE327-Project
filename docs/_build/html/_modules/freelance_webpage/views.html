@@ -103,9 +103,9 @@
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span></div>
 
 
-
 <div class="viewcode-block" id="freelancer_dashboard">
 <a class="viewcode-back" href="../../freelance_webpage.html#freelance_webpage.views.freelancer_dashboard">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">freelancer_dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Renders the freelancer dashboard page.</span>
 
@@ -119,9 +119,9 @@
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;dashboards/freelancer-dboard.html&quot;</span><span class="p">)</span></div>
 
 
-
 <div class="viewcode-block" id="employer_dashboard">
 <a class="viewcode-back" href="../../freelance_webpage.html#freelance_webpage.views.employer_dashboard">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">employer_dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Render the employer dashboard page.</span>
 
@@ -190,7 +190,7 @@
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;freelancer_dashboard&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;employer_dashboard&#39;</span><span class="p">)</span>
-
+    
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;register.html&quot;</span><span class="p">)</span></div>
 
 
@@ -236,7 +236,7 @@
                 <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;employer_dashboard&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Invalid credentials&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;login.html&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;register.html&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;login.html&quot;</span><span class="p">)</span></div>
 
@@ -260,7 +260,7 @@
 <span class="sd">                 to the index page</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">auth_logout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span></div>
 
 </pre></div>
 

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'freelance_webpage',
     'post_project',
     'clientprojects',
-    'client_profile'
+    'client_profile',
+    'profiles'
 
 ]
 
@@ -118,6 +119,9 @@ USE_I18N = True
 USE_TZ = True
 
 
+#login URL
+LOGIN_URL = 'login'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -137,6 +141,11 @@ CLIENT_PICS_MEDIA_ROOT = os.path.join(BASE_DIR, 'client_pics')
 DEFAULT_PICS_MEDIA_URL = '/default_pics/'
 
 DEFAULT_PICS_MEDIA_ROOT = os.path.join(BASE_DIR, 'default_pics')
+
+#Uploaded Files in Post Project Url
+FILE_DOC_MEDIA_URL = '/uploaded_docs/'
+
+FILE_DOC_MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_docs')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
