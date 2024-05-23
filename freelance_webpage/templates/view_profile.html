@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h2>{{ user.username }}'s Profile</h2>
+<p>Age: {{ user.userprofile.age }}</p>
+<p>Address: {{ user.userprofile.address }}</p>
+<p>Skills: {{ user.userprofile.skills }}</p>
+<p>Description: {{ user.userprofile.description }}</p>
+{% if user.userprofile.image %}
+<img src="{{ user.userprofile.image.url }}" alt="Profile image">
+{% else %}
+<p>No profile image.</p>
+{% endif %}
+{% endblock %}
