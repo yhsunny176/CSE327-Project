@@ -1,107 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <title>JustaJob Register</title>
     <link rel="stylesheet" href="{% static 'freelance_webpage/CSS/register.css' %}">
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <!-- Left side: image occupying half the page -->
-        <div class="register-image">
-            <img src="{% static 'freelance_webpage/Images/register.png' %}" alt="Register Image">
+      <div class="register-image">
+        <img src="{% static 'freelance_webpage/Images/register.png' %}" alt="Register Image">
+      </div>
+
+      <div class="register-form">
+        <a href="{% url 'index' %}">
+          <img src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="JustaJob Logo" width="150">
+        </a>
+
+        <!-- Form title -->
+        <h1>Sign up</h1>
+
+        <!-- Form description -->
+        <p>Let’s get you all set up so you can access your personal account.</p>
+        
+        <!-- Role selection buttons -->
+        <div class="role-buttons">
+          <button type="button" onclick="setRole('freelancer')">As Freelancer</button>
+          <button type="button" onclick="setRole('employer')">As Employer</button>
         </div>
-        <!-- Right side: register form occupying half the page -->
-        <div class="register-form">
-             <!-- Messages -->
-             {% if messages %}
-             <ul class="message_register">
-                 {% for message in messages %}
-                     <li class="message_register {{ message.tags }}">{{ message }}</li>
-                 {% endfor %}
-             </ul>
-             {% endif %}
-            <!-- Logo image -->
-            <a href="{% url 'index' %}">
-                <img src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="JustaJob Logo" width="150">
-            </a>
-            <!-- Form title -->
-            <h1>Sign up</h1>
-            <!-- Form description -->
-            <p>Let’s get you all set up so you can access your personal account.</p>
-            <!-- Role selection buttons -->
-            <div class="role-buttons">
-                <button type="button" onclick="setRole('freelancer')">As Freelancer</button>
-                <button type="button" onclick="setRole('employer')">As Employer</button>
-            </div>
-            <!-- Register form -->
-            <form method="POST" action="{% url 'register' %}" id="registerform">
-                {% csrf_token %}
-                <!-- First Name input -->
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="fname" Required>
 
-                <!-- Last Name input -->
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="lname" required>
+        <!-- Register form -->
+        <form method="POST" action="{% url 'register' %}" id="registerform">
+          {% csrf_token %}
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="fname" required>
 
-                <!-- Email input -->
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="lname" required>
 
-                <!-- Phone Number input -->
-                <label for="phone-number">Phone Number</label>
-                <input type="text" id="phone-number" name="phone_number" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          <label for="phone-number">Phone Number</label>
 
-                <!-- Password input -->
-                <label for="password">Password</label>
-                <input type="password" id="password" name="pass1" required>
+          <input type="text" id="phone-number" name="phone_number" required>
+          <label for="password">Password</label>
 
-                <!-- Confirm Password input -->
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" name="pass2" required>
+          <input type="password" id="password" name="pass1" required>
+          <label for="confirm-password">Confirm Password</label>
 
-                <!-- Hidden input fields for both "freelancer" and "employer" roles -->
-                <input type="hidden" id="role" name="role" value="">
+          <input type="password" id="confirm-password" name="pass2" required>
 
-                <!-- Terms and Privacy Policy checkbox -->
-                <div class="terms">
-                    <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">I agree to all the <a href="#">Terms</a> and <a href="#">Privacy
-                            Policies</a></label>
-                </div>
+          <!-- Hidden input fields for both "freelancer" and "employer" roles -->
+          <input type="hidden" id="role" name="role" value="">
 
-                <!-- Submit button -->
-                <button type="submit">Create account</button>
+          <!-- Terms and Privacy Policy checkbox -->
+          <div class="terms">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to all the <a href="#">Terms</a> and <a href="#">Privacy
+            Policies</a></label>
+          </div>
 
-            </form>
-            <!-- Login link -->
-            <div class="login-link">
-                Already have an account? <a href="{% url 'login' %}">Login</a>
-            </div>
+          <!-- Submit button -->
+          <button type="submit">Create account</button> 
+        </form>
+        
+        <div class="login-link">
+          Already have an account? <a href="{% url 'login' %}">Login</a>
         </div>
+      </div>
     </div>
+
+    <!-- custom javascript -->
     <script>
+        //set role based on user button selection
         function setRole(role) {
             const buttons = document.querySelectorAll('.role-buttons button');
             buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-            if (role === 'freelancer') {
-                buttons[0].classList.add('active');
-                // Set the value of the hidden input field for "freelancer"
-                document.getElementById('role').value = 'freelancer';
-            } else if (role === 'employer') {
-                buttons[1].classList.add('active');
-                // Set the value of the hidden input field for "employer"
-                document.getElementById('role').value = 'employer';
-            }
+            button.classList.remove('active');
+        });
+        if (role === 'freelancer') {
+            buttons[0].classList.add('active');
+            // Set the value of the hidden input field for "freelancer"
+            document.getElementById('role').value = 'freelancer';
+        } else if (role === 'employer') {
+            buttons[1].classList.add('active');
+            // Set the value of the hidden input field for "employer"
+            document.getElementById('role').value = 'employer';
         }
-    </script>    
-</body>
+      }
 
+      //Capitalize first letter of first name and last name
+      function capitalizeFirstLetter(value) {
+          return value.charAt(0).toUpperCase() + value.slice(1);
+      }
+      document.getElementById('first-name').addEventListener('blur', function () {
+          this.value = capitalizeFirstLetter(this.value);
+      });
+      document.getElementById('last-name').addEventListener('blur', function () {
+          this.value = capitalizeFirstLetter(this.value);
+      });
+
+      //validate Form
+      function validateForm() {
+          var role = document.getElementById('role').value;
+          if (!role) {
+          alert('Please select a role (Freelancer or Employer)');
+          return false; // Prevent form submission
+          }
+          return true; // Allow form submission
+      }
+
+      // Add an event listener to the form submission
+      document.getElementById('registerform').addEventListener('submit', function (event) {
+          // Check if any of the buttons is in the active state
+          const buttons = document.querySelectorAll('.role-buttons button');
+          const activeButton = Array.from(buttons).find(button => button.classList.contains('active'));
+          if (!activeButton) {
+              alert('Please select a role by clicking one of the buttons.');
+              event.preventDefault(); // Prevent form submission
+          }
+      });
+    </script>
+  </body>
 </html>

@@ -9,5 +9,5 @@ urlpatterns = [
     path('index', views.index, name='index'),
     path('logout', views.logout, name='logout'),
     path('freelancer_dashboard', views.freelancer_dashboard, name='freelancer_dashboard'),
-    path('employer_dashboard', views.employer_dashboard, name='employer_dashboard'), 
+    path('employer_dashboard', views.employer_dashboard, name='employer_dashboard'),
 ]

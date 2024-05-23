@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Post Project</title>
+    <title>Employer Dashboard</title>
     <!-- css links -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}" />
@@ -16,92 +15,91 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
-    <!--favicon-->
+    <!-- favicon -->
     <link rel="shortcut icon" type="image/png" href="{% static 'freelance_webpage/Images/fav-icon.svg' %}" />
-</head>
+    <style>
+      .page-bg {
+        display: flex;
+        flex-direction: column;
+      }
+      .container.mt-5 {
+        flex: 1;
+      }
+      .container.mt-5 .row {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+      .card {
+        height: 300px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+      }
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
 
-<body class="page-bg">
+  <body class="page-bg">
     <div id="preloader">
-        <div id="status">
-            <img src="{% static 'freelance_webpage/Images/preloader.svg' %}" id="preloader_image" alt="loader">
-        </div>
+      <div id="status">
+        <img src="{% static 'freelance_webpage/Images/preloader.svg' %}" id="preloader_image" alt="loader" />
+      </div>
     </div>
     <!-- return to top -->
-    <a href="javascript:void(0);" id="return-to-top" class="change-bg2"> <i class="fas fa-angle-double-up"></i></a>
+    <a href="javascript:void(0);" id="return-to-top" class="change-bg2"><i class="fas fa-angle-double-up"></i></a>
 
-<!-- header start -->
-<div class="main-header-wrapper1 inner-main-header float_left">
-    <div class="sb-main-header1">
-        <div class="menu-items-wrapper menu-item-wrapper3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
-            <div class="container custom-container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <div class="index1-logo">
-                            <a href="{% static 'index.html' %}">
-                                <img class="normal-logo" src="{% static 'freelance_webpage/Images/logo_color.png' %}"
-                                    alt="logo">
-                                <img class="sticky-logo" src="{% static 'freelance_webpage/Images/logo.png' %}"
-                                    alt="logo">
-                            </a>
-                        </div>
-                        <nav class="navbar navbar-expand-lg">
-                            <ul class="navbar-nav">
-                                {% if user.is_authenticated %}
-                                  <li class="nav-item menu-click5 ps-rel">
-                                      <a class="nav-link" href="{% url 'employer_dashboard' %}">Home</a>
-                                  </li>
-                                {% endif %}
-                                <li class="nav-item menu-click ps-rel">
-                                    <a class="nav-link" href="javascript:void(0);">Services
-                                        <span><i class="fas fa-chevron-down"></i></span>
-                                    </a>
-                                    <ul class="dropdown-items menu-open">
-                                        {% if user.is_authenticated and user.userprofile.role == 'freelancer' %}
-                                            <li><a href="{% url 'postproject' %}">Post Project</a></li>
-                                            <li><a href="#">My Projects</a></li>
-                                            <li><a href="#">My Portfolio</a></li>
-                                        {% else %}
-                                            <li><a href="{% url 'postproject' %}">Post Project</a></li>
-                                            <li><a href="{% url 'clientprojects' %}">My Project Listings</a></li>
-                                            <li><a href="#">Search Freelancers</a></li>
-                                        {% endif %}
-                                    </ul>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact Support</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    <!-- logout button -->
-                    <div class="col-lg-4 col-md-6">
-                        {% if user.is_authenticated %}
-                            <form action="{% url 'logout' %}" method="post">
-                                {% csrf_token %}
-                                <ul class="d-xl-flex d-lg-flex d-md-none d-sm-none d-none justify-content-end align-items-center">
-                                    <li class="post-drop">
-                                        <button type="submit" class="post-btn">Sign Out</button>
-                                    </li>
-                                </ul>
-                            </form>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- header end -->
+    <!-- navbar inheritance -->
+    {% include 'common/navbar.html' %}
+    <!-- navbar end -->
 
     <!-- inner page start -->
-    
-
-    <!-- inner page end-->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <a href="{% url 'postproject' %}">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-briefcase fa-3x mb-3"></i>
+                <h5 class="card-title">Post Projects</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-4">
+          <a href="{% url 'clientprojects' %}">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-clipboard-list fa-3x mb-3"></i>
+                <h5 class="card-title">My Project Listings</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <a href="{%url 'client_profile' %}">
+              <div class="card text-center">
+                <div class="card-body">
+                  <i class="fas fa-user fa-3x mb-3"></i>
+                  <h5 class="card-title">Update Profile</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+      </div>
+    </div>
+    <!-- inner page end -->
 
     <!-- footer inheritance -->
     {% include 'common/footer.html' %}
+    <!-- footer end -->
 
     <!-- javaScripts -->
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
@@ -111,8 +109,5 @@
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/contact_form.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
-
-
-</body>
-
+  </body>
 </html>

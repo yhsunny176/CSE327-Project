@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>post_project package &mdash; JustAJob.com - A maketplace for freelancers and employers 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="post_project.migrations package" href="post_project.migrations.html" />
+    <link rel="prev" title="freelance_webpage.migrations package" href="freelance_webpage.migrations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            JustAJob.com - A maketplace for freelancers and employers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="freelance_webpage.html">freelance_webpage package</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">post_project package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post_project.migrations.html">post_project.migrations package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-post_project">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-post_project.admin">post_project.admin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post_project.admin.PostProjectAdmin"><code class="docutils literal notranslate"><span class="pre">PostProjectAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.admin.PostProjectAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">PostProjectAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">PostProjectAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.admin.PostProjectAdmin.media"><code class="docutils literal notranslate"><span class="pre">PostProjectAdmin.media</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-post_project.apps">post_project.apps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post_project.apps.PostProjectConfig"><code class="docutils literal notranslate"><span class="pre">PostProjectConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.apps.PostProjectConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">PostProjectConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.apps.PostProjectConfig.name"><code class="docutils literal notranslate"><span class="pre">PostProjectConfig.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">PostProjectConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">PostProjectConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-post_project.models">post_project.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post_project.models.Project"><code class="docutils literal notranslate"><span class="pre">Project</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.user"><code class="docutils literal notranslate"><span class="pre">Project.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.project_name"><code class="docutils literal notranslate"><span class="pre">Project.project_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.category"><code class="docutils literal notranslate"><span class="pre">Project.category</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.project_description"><code class="docutils literal notranslate"><span class="pre">Project.project_description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.min_bid_price"><code class="docutils literal notranslate"><span class="pre">Project.min_bid_price</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.max_bid_price"><code class="docutils literal notranslate"><span class="pre">Project.max_bid_price</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.file_doc"><code class="docutils literal notranslate"><span class="pre">Project.file_doc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.posted_on"><code class="docutils literal notranslate"><span class="pre">Project.posted_on</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.__str__"><code class="docutils literal notranslate"><span class="pre">Project.__str__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Project.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Project.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Project.category</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Project.file_doc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.get_next_by_posted_on"><code class="docutils literal notranslate"><span class="pre">Project.get_next_by_posted_on()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.get_previous_by_posted_on"><code class="docutils literal notranslate"><span class="pre">Project.get_previous_by_posted_on()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.id"><code class="docutils literal notranslate"><span class="pre">Project.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Project.max_bid_price</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Project.min_bid_price</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.objects"><code class="docutils literal notranslate"><span class="pre">Project.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">Project.posted_on</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">Project.project_description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">Project.project_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">Project.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post_project.models.Project.user_id"><code class="docutils literal notranslate"><span class="pre">Project.user_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-post_project.tests">post_project.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-post_project.urls">post_project.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-post_project.views">post_project.views module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post_project.views.post_project"><code class="docutils literal notranslate"><span class="pre">post_project()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="clientprojects.html">clientprojects package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="client_profile.html">client_profile package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">JustAJob.com - A maketplace for freelancers and employers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">post_project package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/post_project.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="post-project-package">
+<h1>post_project package<a class="headerlink" href="#post-project-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="post_project.migrations.html">post_project.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post_project.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post_project.migrations.html#module-post_project.migrations.0001_initial">post_project.migrations.0001_initial module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post_project.migrations.html#post_project.migrations.0001_initial.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="post_project.migrations.html#post_project.migrations.0001_initial.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="post_project.migrations.html#post_project.migrations.0001_initial.Migration.initial"><code class="docutils literal notranslate"><span class="pre">Migration.initial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="post_project.migrations.html#post_project.migrations.0001_initial.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post_project.migrations.html#module-post_project.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-post_project">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-post_project" title="Link to this heading"></a></h2>
+</section>
+<section id="module-post_project.admin">
+<span id="post-project-admin-module"></span><h2>post_project.admin module<a class="headerlink" href="#module-post_project.admin" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="post_project.admin.PostProjectAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">post_project.admin.</span></span><span class="sig-name descname"><span class="pre">PostProjectAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/post_project/admin.html#PostProjectAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#post_project.admin.PostProjectAdmin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<p>Admin configuration for the Project model.</p>
+<p>This admin class provides configuration options for displaying and interacting with
+Project instances in the Django admin interface.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.admin.PostProjectAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><a class="headerlink" href="#post_project.admin.PostProjectAdmin.list_display" title="Link to this definition"></a></dt>
+<dd><p>The fields to display in the list view of Project instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('username',</span> <span class="pre">'project_name',</span> <span class="pre">'category',</span> <span class="pre">'description',</span> <span class="pre">'min_bid_price',</span> <span class="pre">'max__bid_price',</span> <span class="pre">'file_doc',</span> <span class="pre">'posten_on')</span></em><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="post_project.admin.PostProjectAdmin.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#post_project.admin.PostProjectAdmin.media" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-post_project.apps">
+<span id="post-project-apps-module"></span><h2>post_project.apps module<a class="headerlink" href="#module-post_project.apps" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="post_project.apps.PostProjectConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">post_project.apps.</span></span><span class="sig-name descname"><span class="pre">PostProjectConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/post_project/apps.html#PostProjectConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#post_project.apps.PostProjectConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<p>Configuration class for the post_project app.</p>
+<p>This AppConfig subclass represents the configuration for the post_project app.
+It specifies the default auto field and the name of the app.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.apps.PostProjectConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><a class="headerlink" href="#post_project.apps.PostProjectConfig.default_auto_field" title="Link to this definition"></a></dt>
+<dd><p>The default auto field for models in this app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.apps.PostProjectConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#post_project.apps.PostProjectConfig.name" title="Link to this definition"></a></dt>
+<dd><p>The name of the app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'post_project'</span></em><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-post_project.models">
+<span id="post-project-models-module"></span><h2>post_project.models module<a class="headerlink" href="#module-post_project.models" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="post_project.models.Project">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">post_project.models.</span></span><span class="sig-name descname"><span class="pre">Project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/post_project/models.html#Project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#post_project.models.Project" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Model representing a project posted by a user.</p>
+<p>This model stores information about projects posted by users, including the user who posted it,
+project name, category, description, bid price range, attached file (if any), and date posted.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#post_project.models.Project.user" title="Link to this definition"></a></dt>
+<dd><p>The user who posted the project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ForeignKey</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.project_name">
+<span class="sig-name descname"><span class="pre">project_name</span></span><a class="headerlink" href="#post_project.models.Project.project_name" title="Link to this definition"></a></dt>
+<dd><p>The name of the project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CharField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.category">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#post_project.models.Project.category" title="Link to this definition"></a></dt>
+<dd><p>The category of the project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CharField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.project_description">
+<span class="sig-name descname"><span class="pre">project_description</span></span><a class="headerlink" href="#post_project.models.Project.project_description" title="Link to this definition"></a></dt>
+<dd><p>The description of the project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TextField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.min_bid_price">
+<span class="sig-name descname"><span class="pre">min_bid_price</span></span><a class="headerlink" href="#post_project.models.Project.min_bid_price" title="Link to this definition"></a></dt>
+<dd><p>The minimum bid price for the project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PositiveIntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.max_bid_price">
+<span class="sig-name descname"><span class="pre">max_bid_price</span></span><a class="headerlink" href="#post_project.models.Project.max_bid_price" title="Link to this definition"></a></dt>
+<dd><p>The maximum bid price for the project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PositiveIntegerField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.file_doc">
+<span class="sig-name descname"><span class="pre">file_doc</span></span><a class="headerlink" href="#post_project.models.Project.file_doc" title="Link to this definition"></a></dt>
+<dd><p>The attached file for the project (if any).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>FileField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.posted_on">
+<span class="sig-name descname"><span class="pre">posted_on</span></span><a class="headerlink" href="#post_project.models.Project.posted_on" title="Link to this definition"></a></dt>
+<dd><p>The date when the project was posted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DateField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="post_project.models.Project.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/post_project/models.html#Project.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#post_project.models.Project.__str__" title="Link to this definition"></a></dt>
+<dd><p>Returns the username of the user who posted the project.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="post_project.models.Project.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#post_project.models.Project.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="post_project.models.Project.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#post_project.models.Project.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">file_doc</span></span><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd><p>The descriptor for the file attribute on the model instance. Return a
+FieldFile when accessed so you can write code like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">MyModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span> <span class="o">=</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+<p>Assign a file object on assignment so you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/hello.world&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">instance</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="post_project.models.Project.get_next_by_posted_on">
+<span class="sig-name descname"><span class="pre">get_next_by_posted_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateField:</span> <span class="pre">posted_on&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#post_project.models.Project.get_next_by_posted_on" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="post_project.models.Project.get_previous_by_posted_on">
+<span class="sig-name descname"><span class="pre">get_previous_by_posted_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateField:</span> <span class="pre">posted_on&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#post_project.models.Project.get_previous_by_posted_on" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#post_project.models.Project.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">max_bid_price</span></span><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">min_bid_price</span></span><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#post_project.models.Project.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">posted_on</span></span><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">project_description</span></span><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">project_name</span></span><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="post_project.models.Project.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#post_project.models.Project.user_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-post_project.tests">
+<span id="post-project-tests-module"></span><h2>post_project.tests module<a class="headerlink" href="#module-post_project.tests" title="Link to this heading"></a></h2>
+</section>
+<section id="module-post_project.urls">
+<span id="post-project-urls-module"></span><h2>post_project.urls module<a class="headerlink" href="#module-post_project.urls" title="Link to this heading"></a></h2>
+</section>
+<section id="module-post_project.views">
+<span id="post-project-views-module"></span><h2>post_project.views module<a class="headerlink" href="#module-post_project.views" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="post_project.views.post_project">
+<span class="sig-prename descclassname"><span class="pre">post_project.views.</span></span><span class="sig-name descname"><span class="pre">post_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/post_project/views.html#post_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#post_project.views.post_project" title="Link to this definition"></a></dt>
+<dd><p>View function for posting a project.</p>
+<p>This function allows authenticated users to post a new project. It handles POST requests
+containing project details, validates the form data, creates a new project object, and saves
+it to the database. If the request method is GET, it renders the project posting form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpRequest</em>) – The HTTP request object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>If the request method is POST and the form data is valid, redirects the user to the client projects page. If the request method is GET, renders the project posting form.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="freelance_webpage.migrations.html" class="btn btn-neutral float-left" title="freelance_webpage.migrations package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="post_project.migrations.html" class="btn btn-neutral float-right" title="post_project.migrations package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yeasinul Haque Sani, Md Abdul Kader, Nowshin Jahan, Tanha Ahmed Nijhum.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
