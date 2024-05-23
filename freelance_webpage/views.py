@@ -19,6 +19,9 @@ def employer_dashboard(request):
     return render(request, "dashboards/employer-dboard.html")
 
 def register(request):
+    # Clear all messages when rendering the login view
+    storage = messages.get_messages(request)
+    list(storage)  # This will mark all messages as read
     if request.method == "POST":
         fname = request.POST['fname']
         lname = request.POST['lname']
@@ -72,7 +75,6 @@ def login(request):
         password = request.POST.get('password')
 
         if not email or not password:
-            messages.error(request, "Please fill out all fields")
             return render(request, "login.html")
 
         user = authenticate(request, username=email, password=password)

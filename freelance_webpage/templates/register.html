@@ -17,6 +17,14 @@
         </div>
         <!-- Right side: register form occupying half the page -->
         <div class="register-form">
+             <!-- Messages -->
+             {% if messages %}
+             <ul class="message_register">
+                 {% for message in messages %}
+                     <li class="message_register {{ message.tags }}">{{ message }}</li>
+                 {% endfor %}
+             </ul>
+             {% endif %}
             <!-- Logo image -->
             <a href="{% url 'index' %}">
                 <img src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="JustaJob Logo" width="150">
