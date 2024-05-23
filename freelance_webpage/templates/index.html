@@ -25,7 +25,11 @@
               <a href="#services">Services</a>
             </li>
             <li>
-              {% if user.userprofile.role == 'freelancer' %}
+              {% if not 'user.is_authenticated' %}
+              <li class="nav-item menu-click5 ps-rel">
+                <a class="nav-link" href="{% url 'login' %}">Dashboard</a>
+              </li>
+              {% elif user.is_authentiacated and user.userprofile.role == 'freelancer' %}
               <li class="nav-item menu-click5 ps-rel">
                 <a class="nav-link" href="{% url 'freelancer_dashboard' %}">Dashboard</a>
               </li>
@@ -33,7 +37,7 @@
               <li class="nav-item menu-click5 ps-rel">
                     <a class="nav-link" href="{% url 'employer_dashboard' %}">Dashboard</a>
                   </li>
-                  {% endif %}
+              {% endif %}
             </li>
             <li>   
               <a href="#about">About Us</a>

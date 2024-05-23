@@ -30,7 +30,7 @@ def project_view(request):
     if request.user.is_authenticated:
         user_profile = UserProfile.objects.get(user=request.user)
 
-        project_details = Project.objects.filter(user=request.user)
+        project_details = Project.objects.filter(user=request.user).order_by('id')
         
         # Pagination setup
         paginator = Paginator(project_details, 9)  # Show 9 projects per page

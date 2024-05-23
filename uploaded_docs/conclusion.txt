@@ -1,0 +1,13 @@
+   1) The deep learning model for skin cancer detection represents a significant advancement, utilizing AI to improve early diagnosis and patient outcomes.
+   
+   2) Curated and preprocessed diverse skin lesion dataset enabled deep neural networks to differentiate benign from malignant lesions.
+   
+   3) Rigorous training and testing demonstrated the model's reliable and accurate predictions, aiding medical professionals in prompt intervention.
+
+   4) Collaboration between deep learning, medical knowledge, and software development played a pivotal role in the project's success.
+
+   5) The model has potential to ease healthcare burdens, enhance diagnosis efficiency, and reduce skin cancer mortality rates.
+  
+   6) Ongoing advances in machine learning and medical data will likely enhance the model's accuracy and impact.
+
+   So, our project will make an impact on detecting skin cancer early
