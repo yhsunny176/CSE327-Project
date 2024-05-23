@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('post_project.urls')),
     path('', include('clientprojects.urls')),
     path('', include('client_profile.urls')),
+    path('', include('profiles.urls')),
 ]
 
 if settings.DEBUG:

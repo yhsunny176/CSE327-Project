@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'freelance_webpage',
     'post_project',
     'clientprojects',
-    'client_profile'
+    'client_profile',
+    'profiles'
 
 ]
 
