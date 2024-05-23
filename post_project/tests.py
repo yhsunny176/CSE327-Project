@@ -9,7 +9,21 @@ from justajob.settings import *
 import os
 
 class PostProjectViewTest(TestCase):
+    """
+    Test suite for the post_project view.
+
+    Attributes:
+        client (Client): The test client for simulating HTTP requests.
+        user (User): The user created for the test cases.
+        user_profile (UserProfile): The user profile associated with the created user.
+        url (str): The URL for the post_project view.
+        test_file_path (str): The path to a test file used in the tests.
+    """
+
     def setUp(self):
+        """
+        Set up the test environment.
+        """
         self.client = Client()
         self.user = User.objects.create_user(username='testuser@email.com', password='testpassword')
         self.client.login(username='testuser@email.com', password='testpassword')
@@ -18,17 +32,31 @@ class PostProjectViewTest(TestCase):
         self.test_file_path = os.path.join(BASE_DIR, 'uploaded_docs', 'testfile.txt')
 
     def test_post_project_login(self):
+        """
+        Test accessing the post_project view while logged in.
+
+        Asserts that the response status code is 200 and the correct template is used.
+        """
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'post_project/postproject.html')
 
     def test_post_project_logout(self):
+        """
+        Test accessing the post_project view while logged out.
+
+        Asserts that the response is a redirect to the login page.
+        """
         self.client.logout()
         response = self.client.get(self.url)
         self.assertRedirects(response, f"{reverse('login')}?next={self.url}")
 
-
     def tearDown(self):
+        """
+        Clean up after tests by removing any test files created.
+
+        Removes files in the uploaded_docs directory that start with 'testfile_'.
+        """
         # Get the list of files in the uploaded_docs directory
         files_in_dir = os.listdir(os.path.join(BASE_DIR, 'uploaded_docs'))
         
@@ -43,9 +71,12 @@ class PostProjectViewTest(TestCase):
                     os.remove(file_path)
 
     def test_post_project_post_success(self):
-        # Open the file to create a SimpleUploadedFile object
+        """
+        Test posting a project successfully.
+
+        Asserts that a project is created, file is uploaded, and response is a redirect.
+        """
         with open(self.test_file_path, 'rb') as test_file:
-            # Create a SimpleUploadedFile object
             attached_file = SimpleUploadedFile('testfile.txt', test_file.read())
 
         data = {
@@ -57,10 +88,8 @@ class PostProjectViewTest(TestCase):
             'attached_file': attached_file
         }
 
-        # Post the data to the view
         response = self.client.post(self.url, data=data)
 
-        # Assert that the project was created
         self.assertEqual(Project.objects.count(), 1)
         project = Project.objects.first()
         self.assertEqual(project.project_name, 'Test Project')
@@ -68,19 +97,19 @@ class PostProjectViewTest(TestCase):
         self.assertEqual(project.project_description, 'Test Description')
         self.assertEqual(project.min_bid_price, 100)
         self.assertEqual(project.max_bid_price, 200)
-        # Get the actual name of the uploaded file
         actual_file_name = os.path.basename(project.file_doc.name)
-        # Assert that the expected file name is contained within the actual file name
         self.assertIn('testfile', actual_file_name)
-        # Assert redirection
         self.assertRedirects(response, reverse('clientprojects'))
 
     def test_post_project_post_non_numeric_prices(self):
-        # Open the file to create a SimpleUploadedFile object
+        """
+        Test posting a project with non-numeric prices.
+
+        Asserts that no project is created and the correct template is used.
+        """
         with open(self.test_file_path, 'rb') as test_file:
-            # Create a SimpleUploadedFile object
             attached_file = SimpleUploadedFile('testfile.txt', test_file.read())
-        # Test posting with non-numeric prices
+
         data = {
             'name': 'Test Project',
             'category': 'Test Category',
@@ -89,17 +118,21 @@ class PostProjectViewTest(TestCase):
             'max_price': 'xyz',
             'attached_file': attached_file
         }
+
         response = self.client.post(self.url, data=data)
         self.assertEqual(Project.objects.count(), 0)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'post_project/postproject.html')
 
     def test_post_project_post_negative_prices(self):
-        # Open the file to create a SimpleUploadedFile object
+        """
+        Test posting a project with negative prices.
+
+        Asserts that no project is created and the correct template is used.
+        """
         with open(self.test_file_path, 'rb') as test_file:
-            # Create a SimpleUploadedFile object
             attached_file = SimpleUploadedFile('testfile.txt', test_file.read())
-        # Test posting with negative prices
+
         data = {
             'name': 'Test Project',
             'category': 'Test Category',
@@ -108,17 +141,21 @@ class PostProjectViewTest(TestCase):
             'max_price': -200,
             'attached_file': attached_file
         }
+
         response = self.client.post(self.url, data=data)
         self.assertEqual(Project.objects.count(), 0)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'post_project/postproject.html')
 
     def test_post_project_post_max_less_than_min(self):
-        # Open the file to create a SimpleUploadedFile object
+        """
+        Test posting a project with max price less than min price.
+
+        Asserts that no project is created and the correct template is used.
+        """
         with open(self.test_file_path, 'rb') as test_file:
-            # Create a SimpleUploadedFile object
             attached_file = SimpleUploadedFile('testfile.txt', test_file.read())
-        # Test posting with max price less than min price
+
         data = {
             'name': 'Test Project',
             'category': 'Test Category',
@@ -127,13 +164,18 @@ class PostProjectViewTest(TestCase):
             'max_price': 100,
             'attached_file': attached_file
         }
+
         response = self.client.post(self.url, data=data)
         self.assertEqual(Project.objects.count(), 0)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'post_project/postproject.html')
 
     def test_post_project_post_missing_file(self):
-        # Test posting with missing file
+        """
+        Test posting a project with missing file.
+
+        Asserts that no project is created and the correct template is used.
+        """
         data = {
             'name': 'Test Project',
             'category': 'Test Category',
@@ -141,18 +183,22 @@ class PostProjectViewTest(TestCase):
             'min_price': 100,
             'max_price': 200
         }
+
         response = self.client.post(self.url, data=data)
         self.assertEqual(Project.objects.count(), 0)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'post_project/postproject.html')
 
     def test_post_project_post_not_authenticated(self):
-        # Test posting when user is not authenticated
+        """
+        Test posting a project when user is not authenticated.
+
+        Asserts that the response is a redirect to the login page.
+        """
         self.client.logout()
-        # Open the file to create a SimpleUploadedFile object
         with open(self.test_file_path, 'rb') as test_file:
-            # Create a SimpleUploadedFile object
             attached_file = SimpleUploadedFile('testfile.txt', test_file.read())
+
         data = {
             'name': 'Test Project',
             'category': 'Test Category',
@@ -161,10 +207,15 @@ class PostProjectViewTest(TestCase):
             'max_price': 200,
             'attached_file': attached_file
         }
+
         response = self.client.post(self.url, data=data)
         self.assertRedirects(response, f"{reverse('login')}?next={self.url}")
 
     def test_postproject_url_resolves(self):
-        # Test that the 'postproject' URL resolves to the correct view
+        """
+        Test that the 'postproject' URL resolves to the correct view.
+
+        Asserts that the resolved view function is post_project.
+        """
         url = reverse('postproject')
         self.assertEqual(resolve(url).func, post_project)
