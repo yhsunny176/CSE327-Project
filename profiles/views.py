@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-from django.shortcuts import render
-
-# Create your views here.
-=======
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -49,4 +44,3 @@ def update_profile(request):
     else:
         form = ProfileForm(instance=user_profile)
     return render(request, 'profiles/update_profile.html', {'form': form})
->>>>>>> Stashed changes
