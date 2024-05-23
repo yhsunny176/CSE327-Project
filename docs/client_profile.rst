@@ -9,13 +9,8 @@ Subpackages
 
    client_profile.migrations
 
-Module contents
----------------
-
-.. automodule:: client_profile
-   :members:
-   :undoc-members:
-   :show-inheritance:
+Submodules
+----------
 
 client\_profile.admin module
 ----------------------------
@@ -61,6 +56,14 @@ client\_profile.views module
 ----------------------------
 
 .. automodule:: client_profile.views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: client_profile
    :members:
    :undoc-members:
    :show-inheritance:

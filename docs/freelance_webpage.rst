@@ -9,13 +9,8 @@ Subpackages
 
    freelance_webpage.migrations
 
-Module contents
----------------
-
-.. automodule:: freelance_webpage
-   :members:
-   :undoc-members:
-   :show-inheritance:
+Submodules
+----------
 
 freelance\_webpage.admin module
 -------------------------------
@@ -69,6 +64,14 @@ freelance\_webpage.views module
 -------------------------------
 
 .. automodule:: freelance_webpage.views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: freelance_webpage
    :members:
    :undoc-members:
    :show-inheritance:

@@ -29,4 +29,3 @@ client_profile
    :maxdepth: 4
 
    client_profile.rst
-

@@ -9,14 +9,8 @@ Subpackages
 
    clientprojects.migrations
 
-Module contents
----------------
-
-.. automodule:: clientprojects
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
+Submodules
+----------
 
 clientprojects.admin module
 ---------------------------
@@ -62,6 +56,14 @@ clientprojects.views module
 ---------------------------
 
 .. automodule:: clientprojects.views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: clientprojects
    :members:
    :undoc-members:
    :show-inheritance:
