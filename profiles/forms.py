@@ -1,4 +1,5 @@
 from django import forms
+<<<<<<< Updated upstream
 from .models import UserProfile
 
 # Define form for updating UserProfile
@@ -11,3 +12,11 @@ class UserProfileForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
         }
+=======
+from .models import FreelancerProfile
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = FreelancerProfile
+        fields = ['age', 'address', 'skills', 'description', 'image']
+>>>>>>> Stashed changes

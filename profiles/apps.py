@@ -6,4 +6,8 @@ class ProfilesConfig(AppConfig):
 
     # Import signals when the app is ready
     def ready(self):
+<<<<<<< Updated upstream
         import profiles.signals
+=======
+        import profiles.signals
+>>>>>>> Stashed changes
