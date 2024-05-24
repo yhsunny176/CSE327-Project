@@ -50,6 +50,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">freelance_webpage.migrations package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-freelance_webpage.migrations.0001_initial">freelance_webpage.migrations.0001_initial module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-freelance_webpage.migrations.0002_alter_userprofile_user">freelance_webpage.migrations.0002_alter_userprofile_user module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-freelance_webpage.migrations">Module contents</a></li>
 </ul>
 </li>
@@ -126,6 +127,25 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="freelance_webpage.migrations.0001_initial.Migration.operations">
 <span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;CreateModel</span>&#160; <span class="pre">name='UserProfile',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('role',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('country',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('phone_number',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('street_address',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('client_pic',</span> <span class="pre">&lt;django.db.models.fields.files.ImageField&gt;),</span> <span class="pre">('user',</span> <span class="pre">&lt;django.db.models.fields.related.OneToOneField&gt;)]&gt;]</span></em><a class="headerlink" href="#freelance_webpage.migrations.0001_initial.Migration.operations" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-freelance_webpage.migrations.0002_alter_userprofile_user">
+<span id="freelance-webpage-migrations-0002-alter-userprofile-user-module"></span><h2>freelance_webpage.migrations.0002_alter_userprofile_user module<a class="headerlink" href="#module-freelance_webpage.migrations.0002_alter_userprofile_user" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="freelance_webpage.migrations.0002_alter_userprofile_user.Migration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freelance_webpage.migrations.0002_alter_userprofile_user.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/freelance_webpage/migrations/0002_alter_userprofile_user.html#Migration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#freelance_webpage.migrations.0002_alter_userprofile_user.Migration" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="freelance_webpage.migrations.0002_alter_userprofile_user.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('freelance_webpage',</span> <span class="pre">'0001_initial'),</span> <span class="pre">('auth',</span> <span class="pre">'__first__')]</span></em><a class="headerlink" href="#freelance_webpage.migrations.0002_alter_userprofile_user.Migration.dependencies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="freelance_webpage.migrations.0002_alter_userprofile_user.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;AlterField</span>&#160; <span class="pre">model_name='userprofile',</span> <span class="pre">name='user',</span> <span class="pre">field=&lt;django.db.models.fields.related.OneToOneField&gt;&gt;]</span></em><a class="headerlink" href="#freelance_webpage.migrations.0002_alter_userprofile_user.Migration.operations" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
