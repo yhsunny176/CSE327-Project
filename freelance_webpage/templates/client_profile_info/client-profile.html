@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Profile</title>
+    <!-- css links -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'freelance_webpage/Images/fav-icon.svg' %}" />
+  </head>
+
+  <body class="page-bg">
+    <div id="preloader">
+      <div id="status">
+        <img src="{% static 'freelance_webpage/Images/preloader.svg' %}" id="preloader_image" alt="loader" />
+      </div>
+    </div>
+    <!-- return to top -->
+    <a href="javascript:void(0);" id="return-to-top" class="change-bg2"><i class="fas fa-angle-double-up"></i></a>
+
+    <!-- navbar inheritance -->
+    {% include 'common/navbar.html' %}
+    <!-- navbar end -->
+
+    <!-- inner page start -->
+    <div class="inner-page-main-wrapper float_left">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+            <div class="profile-sidebar">
+              <div class="top-details">
+                {% if user_profile %}
+                  <img src="{{ user_profile.client_pic }}" alt="client-picture" />
+                {% else %}
+                  <img src="{% static 'default_pics/p2.png' %}" alt="client-picture" />
+                {% endif %}
+                <p>{{ user.get_full_name }}</p>
+              </div>
+              <div class="bottom-details">
+                <a class="custom-btn" href="{% url 'postproject' %}"><span>Post Project</span></a>
+              </div>
+            </div>
+            <!--  -->
+            <div class="profile-sidebar">
+              <h4 class="title-sidebar">Your Profile Details</h4>
+              <div class="cdi-box float_left mt-4">
+                <div class="icon-client">
+                  <span><i class="far fa-user"></i></span>
+                </div>
+                <div class="icon-client-text">
+                  <p>Name:</p>
+                  <p>{{ user.get_full_name }}</p>
+                </div>
+              </div>
+              <!--  -->
+              <div class="cdi-box float_left mt-4">
+                <div class="icon-client">
+                  <span><i class="far fa-calendar-check"></i></span>
+                </div>
+                <div class="icon-client-text">
+                  <p>Member since:</p>
+                  <p>{{ user_details.date_joined }}</p>
+                </div>
+              </div>
+              <!--  -->
+              <div class="cdi-box float_left mt-3">
+                <div class="icon-client">
+                  <span><i class="fas fa-map-marker-alt"></i></span>
+                </div>
+                <div class="icon-client-text">
+                  <p>Location:</p>
+                  <p>{{ user_profile.country }} , {{ user_profile.street_address }}</p>
+                </div>
+              </div>
+              <!--  -->
+              <div class="cdi-box float_left mt-3">
+                <div class="icon-client">
+                  <span><i class="far fa-envelope"></i></span>
+                </div>
+                <div class="icon-client-text">
+                  <p>Email Address:</p>
+                  <p>{{ user_details.email }}</p>
+                </div>
+              </div>
+              <!--  -->
+              <div class="cdi-box float_left mb-5 mt-3">
+                <div class="icon-client">
+                  <span><i class="fas fa-phone"></i></span>
+                </div>
+                <div class="icon-client-text">
+                  <p>Contact Number:</p>
+                  <p>{{ user_profile.phone_number }}</p>
+                </div>
+              </div>
+              <!--  -->
+            </div>
+          </div>
+
+          <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+            <!-- Update Profile -->
+            <div class="update-profile-main-wrapper update-info">
+              <h6>Update Your Profile</h6>
+              <div class="text-appear">
+                <p>First Name:</p>
+                <h4>{{ user.first_name }}</h4>
+              </div>
+              <div class="text-appear">
+                <p>Last Name:</p>
+                <h4>{{ user.last_name }}</h4>
+              </div>
+              <div class="update-form-wrapper">
+                <form method="post" action="{% url 'client_profile_update' %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="displayEmail">Email Address:</label>
+                    <div class="editable-field" id="editableEmail">
+                      <p id="displayEmail">{{ user_details.email }}</p>
+                      <span>
+                        <button type="button" class="field-edit-btn" onclick="toggleEdit('Email', 'editableEmail')">Update <span><i class="fas fa-pen"></i></span></button>
+                        </button>
+                      </span>
+                      <input type="email" name="email" class="form-control d-none" id="inputEmail" value="{{ user_details.email }}" placeholder="Update your email"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="displayCountry">Country:</label>
+                    <div class="editable-field"  id="editableCountry">
+                      <p id="displayCountry">{{ user_profile.country }}</p>
+                      <span>
+                        <button type="button" class="field-edit-btn" onclick="toggleEdit('Country', 'editableCountry')">Update<span><i class="fas fa-pen"></i></span>
+                        </button>
+                      </span>
+                      <input type="text" name="country" class="form-control d-none" id="inputCountry" value="{{ user_profile.country }}" placeholder="Update your country"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="displayStreetAddress">Street Address:</label>
+                    <div class="editable-field"  id="editableStreetAddress">
+                      <p id="displayStreetAddress">{{ user_profile.street_address }}</p>
+                      <span>
+                        <button type="button" class="field-edit-btn" onclick="toggleEdit('StreetAddress', 'editableStreetAddress')">Update<span><i class="fas fa-pen"></i></span>
+                        </button>
+                      </span>
+                      <input type="text" name="street_address" class="form-control d-none" id="inputStreetAddress" value="{{ user_profile.street_address }}"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="displayPhone">Phone Number:</label>
+                    <div class="editable-field" id="editablePhone">
+                      <p id="displayPhone">{{ user_profile.phone_number }}</p>
+                      <span>
+                        <button type="button" class="field-edit-btn" onclick="toggleEdit('Phone', 'editablePhone')">Update<span><i class="fas fa-pen"></i></span>
+                        </button>
+                      </span>
+                      <input type="text" name="phone_number" class="form-control d-none" id="inputPhone" value="{{ user_profile.phone_number }}"/>
+                    </div>
+                  </div>
+                  <h4>Change Profile Picture</h4>
+                  <div class="form-group row">
+                    <div class="user-pic-upload col-md-12 col-12">
+                      <label>Change your profile picture by uploading a new one.</label>
+                      <input name="client_pic_upload" class="pic-upload" type="file" />
+                    </div>
+                  </div>
+                  <button type="submit" class="custom-btn">Update Profile</button>
+                </form>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- inner page end -->
+
+    <!-- footer inheritance -->
+    {% include 'common/footer.html' %}
+    <!-- footer end -->
+
+    <!-- javaScripts -->
+    <!-- Toggle edit for Field Update -->
+    <script>
+      function toggleEdit(field, parentId) {
+        var displayElement = document.getElementById(`display${field}`);
+        var inputElement = document.getElementById(`input${field}`);
+        var buttonElement = document.querySelector(`#display${field} + span button`);
+        var parentElement = document.getElementById(parentId);
+        
+        if (displayElement.classList.contains('d-none')) {
+            displayElement.classList.remove('d-none');
+            inputElement.classList.add('d-none');
+            buttonElement.innerHTML = 'Update <span><i class="fas fa-pen"></i></span>';
+            parentElement.classList.remove('reverse');
+        } else {
+            displayElement.classList.add('d-none');
+            inputElement.classList.remove('d-none');
+            buttonElement.innerHTML = 'Cancel Update <span><i class="fas fa-times"></i></span>';
+            parentElement.classList.add('reverse');
+        }
+    }  
+    </script>
+    
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/contact_form.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+  </body>
+</html>
