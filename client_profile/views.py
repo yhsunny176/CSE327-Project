@@ -67,7 +67,7 @@ def profile_view(request):
 
 
 @login_required
-def update_profile(request):
+def update_profile_client(request):
     """Update the user profile information.
 
     This view function allows authenticated users to update their profile information,
