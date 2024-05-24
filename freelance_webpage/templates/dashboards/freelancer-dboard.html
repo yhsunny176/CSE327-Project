@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Project</title>
+    <!-- CSS links -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/freelancer.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'freelance_webpage/Images/fav-icon.svg' %}">
+</head>
+
+<body class="page-bg">
+    <div id="preloader">
+        <div id="status">
+            <img src="{% static 'freelance_webpage/Images/preloader.svg' %}" id="preloader_image" alt="loader">
+        </div>
+    </div>
+    <!-- Return to top button -->
+    <a href="javascript:void(0);" id="return-to-top" class="change-bg2">
+        <i class="fas fa-angle-double-up"></i>
+    </a>
+
+    <!-- Header -->
+    <div class="main-header-wrapper1 inner-main-header float_left">
+        <div class="sb-main-header1">
+            <div class="menu-items-wrapper menu-item-wrapper3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
+                <div class="container custom-container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            
+                            <nav class="navbar navbar-expand-lg">
+                                <ul class="navbar-nav">
+                                    {% if user.is_authenticated and user.userprofile.role == 'freelancer' %}
+                                    <li class="nav-item menu-click5 ps-rel">
+                                        <a class="nav-link" href="{% url 'freelancer_dashboard' %}">Home</a>
+                                    </li>
+                                    {% endif %}
+                                    <li class="nav-item menu-click ps-rel">
+                                        <a class="nav-link" href="javascript:void(0);">Services
+                                            <span><i class="fas fa-chevron-down"></i></span>
+                                        </a>
+                                        <ul class="dropdown-items menu-open">
+                                            {% if user.is_authenticated and user.userprofile.role == 'freelancer' %}
+                                            <li><a href="{% url 'postproject' %}"></a></li>
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#"></a></li>
+                                            {% else %}
+                                            <li><a href="{% url 'postproject' %}"></a></li>
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#"></a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"> </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="sidebar">
+                            <div class="sidebar-header">
+                                <div class="index1-logo">
+                                    <a href="{% static 'index.html' %}">
+                                        <img class="normal-logo" src="{% static 'freelance_webpage/Images/logo_color.png' %}" alt="logo">
+                                        
+                                    </a>
+                                </div>
+                            </div>
+                            <ul class="sidebar-menu">
+                                <li><a href="{% url 'freelancer_dashboard' %}">Home</a></li>
+                                <li><a href="{% url 'update_profile' %}">Update Profile</a></li>
+                                <li><a href="{% url 'all_skills' %}">Skills</a></li>
+                                <li><a href="{% url 'create_portfolio' %}">Portfolio</a></li>
+                                <li><a href="{% url 'view_projects' %}">Search Projects</a></li>
+                                
+                            </ul>
+                        </div>
+                    
+                        <!-- Content -->
+                        <div class="main-content">
+                            <div class="container">
+                                <h1>Welcome to Your Freelancer Dashboard, {{ user.first_name }}!</h1>
+                                
+                                <!-- Display Ongoing Projects -->
+                                <h2>Ongoing Projects:</h2>
+                                <ul>
+                                    {% for project in ongoing_projects %}
+                                        <li>{{ project.title }}</li>
+                                    {% empty %}
+                                        <li>No ongoing projects.</li>
+                                    {% endfor %}
+                                </ul>
+                                
+                                <!-- Display Earnings -->
+                                <h2>Earnings:</h2>
+                                <p>Total Earnings: ${{ total_earnings }}</p>
+                                
+                                <!-- Display Notifications -->
+                                <h2>Notifications:</h2>
+                                <div class="notifications">
+                                    {% for notification in notifications %}
+                                        <div class="notification">{{ notification }}</div>
+                                    {% empty %}
+                                        <div class="notification">No notifications.</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logout button -->
+                        <div class="col-lg-4 col-md-6">
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <ul class="d-xl-flex d-lg-flex d-md-none d-sm-none d-none justify-content-end align-items-center">
+                                    <li class="post-drop">
+                                        <button type="submit" class="post-btn">Sign Out</button>
+                                    </li>
+                                </ul>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header end -->
+
+    <!-- Inner page content here -->
+
+    <!-- Footer inheritance -->
+    {% include 'common/footer.html' %}
+
+    <!-- JavaScripts -->
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/contact_form.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+</html>
