@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Create Portfolio</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="link">Link:</label>
+                <input type="url" name="link" id="link" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Create Portfolio</button>
+        </form>
+    </div>
+</body>
+</html>
