@@ -118,7 +118,7 @@ def update_profile_client(request):
         if street_address is not None:
             user_profile.street_address = street_address
 
-        if phone is not None:
+        if phone:
             user_profile.phone_number = phone
 
         user_profile.save()

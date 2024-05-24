@@ -1102,7 +1102,7 @@ button.button-btn span {
 }
 
 .inner-page-main-wrapper .update-profile-main-wrapper .update-form-wrapper form .form-group input {
-  width: 100%;
+  width: 80%;
   border: 1px solid #ccc;
   border-radius: 30px;
   padding: 0px 24px;
@@ -1119,6 +1119,47 @@ button.button-btn span {
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 14px;
+}
+
+.inner-page-main-wrapper .update-profile-main-wrapper .update-form-wrapper form .form-group p {
+  font-size: 18px;
+  font-weight: 500;
+  width: max-content;
+}
+
+.inner-page-main-wrapper .update-profile-main-wrapper .update-form-wrapper form .form-group .editable-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inner-page-main-wrapper .update-profile-main-wrapper .update-form-wrapper form .form-group .editable-field.reverse{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.inner-page-main-wrapper .update-profile-main-wrapper .update-form-wrapper form .form-group .field-edit-btn {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 20px;
+  color: #797979;
+}
+
+.inner-page-main-wrapper .update-profile-main-wrapper .update-form-wrapper form .form-group .field-edit-btn:hover {
+  color: #0060aa;
+}
+
+.inner-page-main-wrapper .update-profile-main-wrapper .update-form-wrapper form .form-group .field-edit-btn i{
+  font-size: 15px;
+  margin-right: 8px;
 }
 
 .inner-page-main-wrapper .update-profile-main-wrapper .update-form-wrapper .custom-btn {
