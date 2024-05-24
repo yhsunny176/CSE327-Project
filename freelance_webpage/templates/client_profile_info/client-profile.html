@@ -107,6 +107,7 @@
           </div>
 
           <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+            <!-- Update Profile -->
             <div class="update-profile-main-wrapper update-info">
               <h6>Update Your Profile</h6>
               <div class="text-appear">
@@ -118,23 +119,51 @@
                 <h4>{{ user.last_name }}</h4>
               </div>
               <div class="update-form-wrapper">
-                <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
+                <form method="post" action="{% url 'client_profile_update' %}" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="form-group">
-                    <label for="inputEmail">Email Address:</label>
-                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your email address" />
+                    <label for="displayEmail">Email Address:</label>
+                    <div class="editable-field" id="editableEmail">
+                      <p id="displayEmail">{{ user_details.email }}</p>
+                      <span>
+                        <button type="button" class="field-edit-btn" onclick="toggleEdit('Email', 'editableEmail')">Update <span><i class="fas fa-pen"></i></span></button>
+                        </button>
+                      </span>
+                      <input type="email" name="email" class="form-control d-none" id="inputEmail" value="{{ user_details.email }}" placeholder="Update your email"/>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputCountry">Country:</label>
-                    <input type="text" name="country" class="form-control" id="inputCountry" placeholder="Enter your Country Name" />
+                    <label for="displayCountry">Country:</label>
+                    <div class="editable-field"  id="editableCountry">
+                      <p id="displayCountry">{{ user_profile.country }}</p>
+                      <span>
+                        <button type="button" class="field-edit-btn" onclick="toggleEdit('Country', 'editableCountry')">Update<span><i class="fas fa-pen"></i></span>
+                        </button>
+                      </span>
+                      <input type="text" name="country" class="form-control d-none" id="inputCountry" value="{{ user_profile.country }}" placeholder="Update your country"/>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputStreetAddress">Street Address:</label>
-                    <input type="text" name="street_address" class="form-control" id="inputStreetAddress" placeholder="Enter your address" />
+                    <label for="displayStreetAddress">Street Address:</label>
+                    <div class="editable-field"  id="editableStreetAddress">
+                      <p id="displayStreetAddress">{{ user_profile.street_address }}</p>
+                      <span>
+                        <button type="button" class="field-edit-btn" onclick="toggleEdit('StreetAddress', 'editableStreetAddress')">Update<span><i class="fas fa-pen"></i></span>
+                        </button>
+                      </span>
+                      <input type="text" name="street_address" class="form-control d-none" id="inputStreetAddress" value="{{ user_profile.street_address }}"/>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPhone">Phone Number:</label>
-                    <input type="text" name="phone-number" class="form-control" id="inputPhone" placeholder="Enter your phone number" />
+                    <label for="displayPhone">Phone Number:</label>
+                    <div class="editable-field" id="editablePhone">
+                      <p id="displayPhone">{{ user_profile.phone_number }}</p>
+                      <span>
+                        <button type="button" class="field-edit-btn" onclick="toggleEdit('Phone', 'editablePhone')">Update<span><i class="fas fa-pen"></i></span>
+                        </button>
+                      </span>
+                      <input type="text" name="phone_number" class="form-control d-none" id="inputPhone" value="{{ user_profile.phone_number }}"/>
+                    </div>
                   </div>
                   <h4>Change Profile Picture</h4>
                   <div class="form-group row">
@@ -146,7 +175,7 @@
                   <button type="submit" class="custom-btn">Update Profile</button>
                 </form>
               </div>
-            </div>
+            </div>            
           </div>
         </div>
       </div>
@@ -158,6 +187,28 @@
     <!-- footer end -->
 
     <!-- javaScripts -->
+    <!-- Toggle edit for Field Update -->
+    <script>
+      function toggleEdit(field, parentId) {
+        var displayElement = document.getElementById(`display${field}`);
+        var inputElement = document.getElementById(`input${field}`);
+        var buttonElement = document.querySelector(`#display${field} + span button`);
+        var parentElement = document.getElementById(parentId);
+        
+        if (displayElement.classList.contains('d-none')) {
+            displayElement.classList.remove('d-none');
+            inputElement.classList.add('d-none');
+            buttonElement.innerHTML = 'Update <span><i class="fas fa-pen"></i></span>';
+            parentElement.classList.remove('reverse');
+        } else {
+            displayElement.classList.add('d-none');
+            inputElement.classList.remove('d-none');
+            buttonElement.innerHTML = 'Cancel Update <span><i class="fas fa-times"></i></span>';
+            parentElement.classList.add('reverse');
+        }
+    }  
+    </script>
+    
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/wow.js' %}"></script>

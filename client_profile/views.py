@@ -67,7 +67,7 @@ def profile_view(request):
 
 
 @login_required
-def update_profile(request):
+def update_profile_client(request):
     """Update the user profile information.
 
     This view function allows authenticated users to update their profile information,
@@ -118,7 +118,7 @@ def update_profile(request):
         if street_address is not None:
             user_profile.street_address = street_address
 
-        if phone is not None:
+        if phone:
             user_profile.phone_number = phone
 
         user_profile.save()

@@ -83,8 +83,7 @@ def register(request):
         myUser.last_name = lname
         myUser.save()
 
-        user_profile = UserProfile.objects.create(
-            user=myUser, role=role, phone_number=phone)
+        user_profile = UserProfile.objects.create(user=myUser, role=role, phone_number=phone)
 
         if not user_profile.country:
             user_profile.country = 'Update Your Country'
@@ -97,7 +96,7 @@ def register(request):
         # Automatically log in the user after registration
         auth_login(request, myUser)
 
-        if role == 'freelancer':
+        if user_profile.role == 'freelancer':
             return redirect('freelancer_dashboard')
         else:
             return redirect('employer_dashboard')
